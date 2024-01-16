@@ -1,0 +1,10 @@
+#!/bin/bash
+
+python_cmd='python3'
+# Fallback to Python 2, if Python 3 is not available
+command -v python3 > /dev/null || python_cmd='python'
+
+echo "python command: " $python_cmd
+
+BASEDIR=$(dirname $0)
+$python_cmd -u $BASEDIR/gpiochecker.py $@

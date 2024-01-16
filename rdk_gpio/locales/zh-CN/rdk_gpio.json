@@ -1,0 +1,77 @@
+{
+    "rdk-gpio": {
+        "label": {
+            "gpiopin": "GPIO",
+            "selectpin": "选择针脚",
+            "resistor": "电阻?",
+            "readinitial": "在部署/重启时读取针脚状态?",
+            "type": "类型",
+            "initpin": "初始化针脚状态?",
+            "debounce": "去抖动",
+            "freq": "频率",
+            "button": "按钮",
+            "pimouse": "鼠标",
+            "pikeyboard": "键盘",
+            "left": "左键",
+            "right": "右键",
+            "middle": "滚轮"
+        },
+        "resistor": {
+            "none": "无",
+            "pullup": "上拉",
+            "pulldown": "下拉"
+        },
+        "digout": "数字输出",
+        "softpwm": "模拟PWM",
+        "pwmout": "PWM输出",
+        "servo": "伺服输出",
+        "initpin0": "初始化针脚 - 低电平 (0)",
+        "initpin1": "初始化针脚 - 高电平 (1)",
+        "left": "左键",
+        "right": "右键",
+        "middle": "滚轮",
+        "any": "任意按键",
+        "pinname": "针脚",
+        "alreadyuse": "已被占用",
+        "alreadyset": "已被设置",
+        "tip": {
+            "pin": "<b>已使用的针脚</b>: ",
+            "in": "提示: 仅支持数字输入，且输入值必须是 0 或 1。",
+            "dig": "提示: 仅支持数字输出，且输入值必须是 0 或 1。",
+            "pwm": "提示: 支持PWM输出， 且输入值必须是 0 到 100之间的整数。",
+            "ser": "<b>Tip</b>: For Servo output - input must be between 0 to 100. 50 is centre."
+        },
+        "types": {
+            "digout": "数字输出",
+            "input": "输入",
+            "pullup": "上拉电阻输入",
+            "pulldown": "下拉电阻输入",
+            "softpwm": "模拟PWM输出",
+            "pwmout": "PWM输出",
+            "servo": "Servo output"
+        },
+        "status": {
+            "stopped": "已停止",
+            "closed": "已关闭",
+            "not-running": "未运行",
+            "not-available": "不可用",
+            "na": "N/A : __value__",
+            "ok": "OK"
+        },
+        "errors": {
+            "ignorenode": "忽略节点",
+            "version": "查看RDK类型失败",
+            "sawpitype": "查看RDK类型",
+            "libnotfound": "未找到GPIO库",
+            "alreadyset": "GPIO针脚 __pin__ 已经被设置为: __type__ 类型",
+            "invalidpin": "无效GPIO针脚",
+            "invalidinput": "无效输入",
+            "needtobeexecutable": "__command__ 需要是可执行程序",
+            "mustbeexecutable": "GPIO指令必须是可执行程序 ",
+            "commandnotfound": "GPIO指令未找到 ",
+            "commandnotexecutable": "GPIO指令未正常运行 ",
+            "error": "错误: __error__",
+            "pythoncommandnotfound": "python GPIO未找到"
+        }
+    }
+}
