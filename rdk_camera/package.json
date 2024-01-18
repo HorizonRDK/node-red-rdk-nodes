@@ -31,5 +31,9 @@
   "homepage": "https://github.com/HorizonRDK/node-red-rdk-nodes",
   "directories": {
     "lib": "lib"
+  },
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
   }
 }
