@@ -1,0 +1,66 @@
+{
+    "rdk-camera" : {
+        "label" : {
+            "camerapi" : "CameraPi",
+            "cameratype": "Camera Type",
+            "filename" : "File Name",
+            "filedefpath" : "File default path", 
+            "filepath" : "File Path", 
+            "filemode" : "File Mode", 
+            "resolution" : "Image Resolution", 
+            "fileformat" : "File Format",
+            "filefqn" : "File Qualified Path and Name",
+            "imageproperties": "Image Properties",
+            "brightness" : "Brightness",
+            "rotation" : "Rotation",
+            "flip": "Image Flip",
+            "hflip": "Horizontal",
+            "vflip": "Vertical",
+            "contrast" : "Contrast",
+            "sharpness" : "Sharpness",
+            "imageeffect" : "Image Effect",
+            "presets": "Preset modes",
+            "exposuremode" : "Exposure",
+            "iso" : "ISO",
+            "agcwait" : "Wait for AGC",
+            "quality" : "Quality",
+            "led" : "LED",
+            "iso": "ISO",
+            "awb": "AWB",
+            "res1" : "320x240",
+            "res2" : "640x480",
+            "res3" : "800x600",
+            "res4" : "1024x768",
+            "res5" : "1920x1080",
+            "res6" : "2592x1944",
+            "name" : "Name",
+            "none" : "none"
+        },
+        "options" : {
+            "usbtype" : "USB Camera",
+            "mipitype" : "MIPI Camera",
+            "automode" : "Auto File Name",
+            "custommode" : "Custom File Name",
+            "bufferedmode" : "Buffered Mode",
+            "yes" : "Yes",
+            "no" : "No",
+            "on" : "On",
+            "off" : "Off"
+        }, 
+        "placeholder" : {
+            "filename" : "Filename with extension",
+            "filepath" : "Full filepath",
+            "brightness" : "0 to 100",
+            "contrast" : "-100 to 100",
+            "sharpness" : "-100 to 100",
+            "quality" : "80",
+            "name" : "Take photo node"
+        },
+        "errors" : {
+            "invalidPath": "Invalid path!",
+            "invalidFileName": "Invalid file name!",
+            "badEnv": "Lack of lib for camera!",
+            "badCamera": "Open camera failed!"
+        }
+    }
+}

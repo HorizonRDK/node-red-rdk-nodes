@@ -1,0 +1,20 @@
+<script type="text/html" data-help-name="rdk-camera takephoto">
+    <p>RDK Camera拍照节点。</p>
+    <h3>输入</h3>
+    <dl class="message-properties">
+        <dt>payload <span class="property-type">any</span></dt>
+    </dl>
+    <h3>输出</h3>
+    <dl class="message-properties">
+        <dt>payload <span class="property-type">string</span></dt>
+    </dl>
+    <h3>描述</h3>
+    <p>该节点的输入部分目前对字段和取值没有特定要求，主要将输入的时间点作为触发拍照的事件。</p>
+    <p>该节点的输出部分会将图片保存的全路径文件名放在<code>msg.payload</code>中输出。</p>
+    <p>在使用拍照节点时可以进行几项配置：</p>
+    <ul>
+        <li>文件模式：自动生成文件/自定义文件名（自定义模式下仅保存最新的图片文件）</li>
+        <li>保存路径：默认<code>~/Pictures</code>, 亦可自定义路径</li>
+        <li>分辨率：默认640x480</li>
+    </ul>
+</script>

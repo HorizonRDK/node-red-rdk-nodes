@@ -1,0 +1,66 @@
+{
+    "rdk-camera" : {
+        "label" : {
+            "camerapi" : "CameraPi",
+            "cameratype": "摄像头类型",
+            "filename" : "文件名",
+            "filedefpath" : "默认路径", 
+            "filepath" : "文件路径", 
+            "filemode" : "文件模式", 
+            "resolution" : "分辨率", 
+            "fileformat" : "File Format",
+            "filefqn" : "File Qualified Path and Name",
+            "imageproperties": "Image Properties",
+            "brightness" : "Brightness",
+            "rotation" : "Rotation",
+            "flip": "Image Flip",
+            "hflip": "Horizontal",
+            "vflip": "Vertical",
+            "contrast" : "Contrast",
+            "sharpness" : "Sharpness",
+            "imageeffect" : "Image Effect",
+            "presets": "Preset modes",
+            "exposuremode" : "Exposure",
+            "iso" : "ISO",
+            "agcwait" : "Wait for AGC",
+            "quality" : "Quality",
+            "led" : "LED",
+            "iso": "ISO",
+            "awb": "AWB",
+            "res1" : "320x240",
+            "res2" : "640x480",
+            "res3" : "800x600",
+            "res4" : "1024x768",
+            "res5" : "1920x1080",
+            "res6" : "2592x1944",
+            "name" : "名称",
+            "none" : "无"
+        },
+        "options" : {
+            "usbtype" : "USB摄像头",
+            "mipitype" : "MIPI摄像头",
+            "automode" : "自动生成文件模式",
+            "custommode" : "自定义文件名模式(仅保留最新数据)",
+            "bufferedmode" : "缓冲数据模式",
+            "yes" : "是",
+            "no" : "否",
+            "on" : "开",
+            "off" : "关"
+        }, 
+        "placeholder" : {
+            "filename" : "带后缀的文件名(*.jpg)",
+            "filepath" : "完整文件路径(要求是存在的目录)",
+            "brightness" : "0 to 100",
+            "contrast" : "-100 to 100",
+            "sharpness" : "-100 to 100",
+            "quality" : "80",
+            "name" : "拍照节点"
+        },
+        "errors" : {
+            "invalidPath": "该文件夹不存在，请先创建！",
+            "invalidFileName": "自定义文件名出错，请检查！",
+            "badEnv": "未检测到摄像头依赖的软件包，请检查！",
+            "badCamera": "开启摄像头失败！"
+        }
+    }
+}

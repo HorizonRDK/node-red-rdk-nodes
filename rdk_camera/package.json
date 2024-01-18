@@ -1,0 +1,35 @@
+{
+  "name": "node-red-node-rdk-camera",
+  "version": "0.0.1",
+  "description": "Node Red Node for getting photos on a RDK X3 with a camera module enabled",
+  "license": "Apache-2.0",
+  "main": "none",
+  "keywords": [
+    "node-red",
+    "rdk",
+    "x3",
+    "camera"
+  ],
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+  },
+  "repository": {
+    "type": "",
+    "url": ""
+  },
+  "node-red": {
+    "nodes": {
+      "rdk-camera": "rdk_camera.js"
+    }
+  },
+  "author": "WYP",
+  "bugs": {
+    "url": ""
+  },
+  "homepage": "",
+  "directories": {
+    "lib": "lib"
+  }
+}

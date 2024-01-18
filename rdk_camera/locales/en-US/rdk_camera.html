@@ -1,0 +1,20 @@
+<script type="text/html" data-help-name="rdk-camera takephoto">
+    <p>RDK Camera Take Photo Node</p>
+    <h3>Input</h3>
+    <dl class="message-properties">
+        <dt>payload <span class="property-type">any</span></dt>
+    </dl>
+    <h3>Output</h3>
+    <dl class="message-properties">
+        <dt>payload <span class="property-type">string</span></dt>
+    </dl>
+    <h3>Details</h3>
+    <p>This node takes input as camera trigger. </p>
+    <p>This node output image url with <code>msg.payload</code>.</p>
+    <p>Settings:</p>
+    <ul>
+        <li>File Mode: AutoMode/CustomMode(Only save the latest image file)</li>
+        <li>File Path: Default path is <code>~/Pictures</code>, custom path is also available.</li>
+        <li>Resolution: Default 640x480</li>
+    </ul>
+</script>

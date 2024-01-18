@@ -1,0 +1,126 @@
+<script type="text/x-red" data-template-name="rdk-camera takephoto">
+    <div class="form-row node-input-cameratype">
+        <label for="node-input-cameratype"><i class="fa"></i> <span data-i18n="rdk-camera.label.cameratype"></span></label>
+        <select id="node-input-cameratype">
+            <!-- <option value="1" data-i18n="rdk-camera.options.usbtype"></option> -->
+            <option value="0" data-i18n="rdk-camera.options.mipitype"></option>
+        </select>
+    </div>
+    <div class="form-row node-input-filemode">
+         <label for="node-input-filemode"><i class="fa fa-file-image-o"></i> <span data-i18n="rdk-camera.label.filemode"></span></label>
+	     <select id="node-input-filemode">
+            <option value="2" data-i18n="rdk-camera.options.automode"></option>
+            <option value="1" data-i18n="rdk-camera.options.custommode"></option>
+            <!-- <option value="0" data-i18n="rdk-camera.options.bufferedmode"></option> -->
+        </select>
+    </div>
+    <div id="filename" class="form-row node-input-filename">
+         <label for="node-input-filename"><i class="fa fa-tag"></i> <span data-i18n="rdk-camera.label.filename"></span></label>
+		 <input type="text" id="node-input-filename" data-i18n="[placeholder]rdk-camera.placeholder.filename">
+    </div>
+    <div id="filedefpath" class="form-row node-input-filedefpath">
+         <label for="node-input-filedefpath"><i class="fa fa-folder"></i> <span data-i18n="rdk-camera.label.filedefpath"></span></label>
+	     <select id="node-input-filedefpath">
+            <option value="1" data-i18n="rdk-camera.options.yes"></option>
+            <option value="0" data-i18n="rdk-camera.options.no"></option>
+        </select>
+    </div>
+    <div id="filepath" class="form-row node-input-filepath">
+         <label for="node-input-filepath"><i class="fa fa-folder"></i> <span data-i18n="rdk-camera.label.filepath"></span></label>
+		 <input type="text" id="node-input-filepath" data-i18n="[placeholder]rdk-camera.placeholder.filepath">
+    </div>
+    <div class="form-row node-input-resolution">
+        <label for="node-input-resolution"><i class="fa fa-camera"></i> <span data-i18n="rdk-camera.label.resolution"></span></label>
+        <select id="node-input-resolution" value="2">
+           <option value="1">320x240</option>
+           <option value="2">640x480</option>
+           <option value="3">800x600</option>
+           <option value="4">1024x768</option>
+           <option value="5">1280x720</option>
+           <option value="6">1640x922</option>
+           <option value="7">1640x1232</option>
+           <option value="8">1920x1080</option>
+       </select>
+   </div>
+    <div class="form-row node-input-name">
+        <label for="node-input-name"><i class="fa fa-tag"></i> <span data-i18n="rdk-camera.label.name"></span></label>
+        <input type="text" id="node-input-name" data-i18n="[placeholder]rdk-camera.placeholder.name" style="width: 296px;">
+    </div>
+</script>
+
+<script type="text/javascript">
+    RED.nodes.registerType("rdk-camera takephoto",{
+        category: "RDK Camera",
+        color: "#41CAF6",
+        defaults: {
+            cameratype: {value:"0", required: true},
+            filemode: {value:"2", required:true},
+            filename: {value:"", required:false},
+            filedefpath: {value:"1", required:true},
+            filepath: {value:"", required:false},
+            fileformat: {value:"jpeg", required:true},
+            resolution: {value:"2", required:true},
+            rotation : {value:"0", required:true},
+            fliph: {value:"0", required:true},
+            flipv: {value:"0", required:true},
+            brightness: {value:"50", required:true},
+            contrast: {value:"0", required:true},
+            sharpness: {value:"0", required:true},
+            quality: {value:"80", required:false},
+            imageeffect: {value:"none", required:true},
+            exposuremode: {value:"auto", required:true}, 
+            iso: {value:"0", required:true},
+            agcwait: {value:"1.0", required:false},
+            led: {value:"0", required:false},
+            awb: {value:"auto", required:false},
+            name: {value:""}
+        },
+        inputs:1,
+        outputs:1,
+        icon: "camera.png",
+        oneditprepare: function() {
+            $("#node-input-filemode").change(function() {
+                var choose = $("#node-input-filemode").val();
+                console.log(choose);
+                if (choose == "0") {
+                	console.log("Buffermode - yes");
+                	$("#filename").hide();
+                    $("#node-input-filedefpath").val("1");
+                    $("#node-input-filepath").val("");
+                	$("#filedefpath").hide();
+                	$("#filepath").hide();
+                	$("#fileformat").hide();
+                } else if (choose == "2") {
+                	console.log("Generate - yes");
+                	$("#filename").hide();
+                    $("#node-input-filedefpath").val("1");
+                    $("#node-input-filepath").val("");
+                	$("#filedefpath").show();
+                	$("#filepath").hide();
+                	$("#fileformat").hide();                    
+                } else {
+                	console.log("FileMode - yes");
+                	$("#filename").show();
+                	$("#filedefpath").show();
+                	$("#filepath").hide();
+                	$("#fileformat").show();
+                }
+            });
+            $("#node-input-filedefpath").change(function() {
+                var choose = $("#node-input-filedefpath").val();
+                console.log(choose);
+                if (choose == "0") {
+                	console.log("FileDefPath - no");
+                	$("#filepath").show();
+                } else {
+                	console.log("FileDefPath - yes");
+                	$("#filepath").hide();
+                    $("#node-input-filepath").val("");
+                }
+            });
+        },
+        label: function() {
+            return this.name || "take photo node";
+        }
+    });
+</script>
