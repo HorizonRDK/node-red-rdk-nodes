@@ -1,7 +1,7 @@
 {
   "name": "node-red-node-rdk-camera",
   "version": "0.0.1",
-  "description": "Node Red Node for getting photos on a RDK X3 with a camera module enabled",
+  "description": "Node Red node for using camera on a RDK hardware",
   "license": "Apache-2.0",
   "main": "none",
   "keywords": [
@@ -16,8 +16,8 @@
   "dependencies": {
   },
   "repository": {
-    "type": "",
-    "url": ""
+    "type": "git",
+    "url": "https://github.com/HorizonRDK/node-red-rdk-nodes/tree/develop/rdk_camera"
   },
   "node-red": {
     "nodes": {
@@ -28,7 +28,7 @@
   "bugs": {
     "url": ""
   },
-  "homepage": "",
+  "homepage": "https://github.com/HorizonRDK/node-red-rdk-nodes",
   "directories": {
     "lib": "lib"
   }
