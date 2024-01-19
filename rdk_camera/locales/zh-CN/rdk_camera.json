@@ -3,6 +3,9 @@
         "label" : {
             "camerapi" : "CameraPi",
             "cameratype": "摄像头类型",
+            "fps": "帧率",
+            "port": "端口号",
+            "defport": "默认端口号",
             "filename" : "文件名",
             "filedefpath" : "默认路径", 
             "filepath" : "文件路径", 
@@ -54,13 +57,16 @@
             "contrast" : "-100 to 100",
             "sharpness" : "-100 to 100",
             "quality" : "80",
-            "name" : "拍照节点"
+            "name" : "拍照节点",
+            "port" : "取值范围3000 - 65535"
         },
         "errors" : {
             "invalidPath": "该文件夹不存在，请先创建！",
             "invalidFileName": "自定义文件名出错，请检查！",
+            "invalidPort": "端口号不满足要求，请检查！",
             "badEnv": "未检测到摄像头依赖的软件包，请检查！",
-            "badCamera": "开启摄像头失败！"
+            "badCamera": "开启摄像头失败！",
+            "badConnection": "连接建立失败，请检查！"
         }
     }
 }

@@ -79,22 +79,27 @@
         outputs:1,
         icon: "camera.png",
         oneditprepare: function() {
+            console.log('file def path: ', this.filedefpath)
+            if(this.filedefpath === '1'){
+                $("#node-input-filedefpath").val('1')
+                $("#filepath").hide();
+            }
+            else{
+                $("#node-input-filedefpath").val('0')
+                $("#filepath").show();
+            }
             $("#node-input-filemode").change(function() {
                 var choose = $("#node-input-filemode").val();
                 console.log(choose);
                 if (choose == "0") {
                 	console.log("Buffermode - yes");
                 	$("#filename").hide();
-                    $("#node-input-filedefpath").val("1");
-                    $("#node-input-filepath").val("");
                 	$("#filedefpath").hide();
                 	$("#filepath").hide();
                 	$("#fileformat").hide();
                 } else if (choose == "2") {
                 	console.log("Generate - yes");
                 	$("#filename").hide();
-                    $("#node-input-filedefpath").val("1");
-                    $("#node-input-filepath").val("");
                 	$("#filedefpath").show();
                 	$("#filepath").hide();
                 	$("#fileformat").hide();                    
@@ -124,3 +129,101 @@
         }
     });
 </script>
+
+<!-- <script type="text/x-red" data-template-name="rdk-camera imagestream">
+    <div class="form-row node-input-cameratype">
+        <label for="node-input-cameratype"><i class="fa"></i> <span data-i18n="rdk-camera.label.cameratype"></span></label>
+        <select id="node-input-cameratype">
+            <option value="0" data-i18n="rdk-camera.options.mipitype"></option>
+        </select>
+    </div>
+
+    <div class="form-row node-input-fps">
+        <label for="node-input-fps"><i class="fa fa-camera"></i> <span data-i18n="rdk-camera.label.fps"></span></label>
+        <select id="node-input-fps" value="2">
+           <option value="1">30</option>
+           <option value="2">20</option>
+           <option value="3">10</option>
+           <option value="4">5</option>
+           <option value="5">2</option>
+           <option value="6">1</option>
+       </select>
+   </div>
+
+    <div class="form-row node-input-resolution">
+        <label for="node-input-resolution"><i class="fa fa-camera"></i> <span data-i18n="rdk-camera.label.resolution"></span></label>
+        <select id="node-input-resolution" value="2">
+           <option value="1">320x240</option>
+           <option value="2">640x480</option>
+           <option value="3">800x600</option>
+           <option value="4">1024x768</option>
+           <option value="5">1280x720</option>
+           <option value="6">1640x922</option>
+           <option value="7">1640x1232</option>
+           <option value="8">1920x1080</option>
+       </select>
+   </div>
+
+   <div id="defport" class="form-row node-input-defport">
+        <label for="node-input-defport"><i class="fa fa-folder"></i> <span data-i18n="rdk-camera.label.defport"></span></label>
+        <select id="node-input-defport">
+            <option value="1" data-i18n="rdk-camera.options.yes"></option>
+            <option value="0" data-i18n="rdk-camera.options.no"></option>
+        </select>
+    </div>
+
+   <div id="port" class="form-row node-input-port">
+        <label for="node-input-port"><i class="fa fa-tag"></i> <span data-i18n="rdk-camera.label.port"></span></label>
+        <input type="text" id="node-input-port" data-i18n="[placeholder]rdk-camera.placeholder.port" style="width: 296px;">
+    </div>
+
+   <div class="form-row node-input-name">
+        <label for="node-input-name"><i class="fa fa-tag"></i> <span data-i18n="rdk-camera.label.name"></span></label>
+        <input type="text" id="node-input-name" data-i18n="[placeholder]rdk-camera.placeholder.name" style="width: 296px;">
+    </div>
+</script> -->
+
+<!-- <script type="text/javascript">
+    RED.nodes.registerType("rdk-camera imagestream",{
+        category: "RDK Camera",
+        color: "#41CAF6",
+        defaults: {
+            cameratype: {value:"0", required: true},
+            fps: {value:"2", required:true},
+            resolution: {value:"2", required:true},
+            defport: {value:"1", required:true},
+            port: {value:"10888", required:true},
+            name: {value:""},
+            
+        },
+        inputs:0,
+        outputs:1,
+        icon: "video.png",
+        oneditprepare: function() {
+            if(this.defport === '1'){
+                $("#node-input-defport").val("1");
+                $("#node-input-port").val("10888");
+                $("#port").hide();
+            }
+            else{
+                $("#node-input-defport").val("0");
+                $("#port").show();
+            }
+            
+            $("#node-input-defport").change(function() {
+                var choose = $("#node-input-defport").val();
+                if (choose == "0") {
+                	console.log("defport - no");
+                	$("#port").show();
+                } else {
+                	console.log("defport - yes");
+                    $("#node-input-port").val("10888");
+                	$("#port").hide();
+                }
+            });
+        },
+        label: function() {
+            return this.name || "image stream node";
+        }
+    });
+</script> -->

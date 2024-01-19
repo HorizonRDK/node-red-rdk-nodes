@@ -28,7 +28,7 @@ enc.encode(0, 3, width, height)
 def latest_buffer(cam):
 	while True:
 		t1 = perf_counter()
-		cam_data = cam.get_img(2, 640, 480)
+		cam_data = cam.get_img(2, width, height)
 		t2 = perf_counter()
 		if (t2 - t1) > 0.01:
 			return cam_data

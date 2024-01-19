@@ -1,6 +1,6 @@
 {
   "name": "node-red-node-rdk-camera",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Node Red node for using camera on a RDK hardware",
   "license": "Apache-2.0",
   "main": "none",
@@ -14,12 +14,14 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
+    "ws": "^8.16.0"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/HorizonRDK/node-red-rdk-nodes/tree/develop/rdk_camera"
+    "url": "https://github.com/HorizonRDK/node-red-rdk-nodes"
   },
   "node-red": {
+    "version": ">=3.1.3",
     "nodes": {
       "rdk-camera": "rdk_camera.js"
     }
@@ -28,9 +30,13 @@
   "bugs": {
     "url": ""
   },
-  "homepage": "https://github.com/HorizonRDK/node-red-rdk-nodes",
+
+  "homepage": "https://developer.horizon.cc/",
   "directories": {
     "lib": "lib"
+  },
+  "engines": {
+    "node": ">=18.0.0"
   },
   "publishConfig": {
     "access": "public",

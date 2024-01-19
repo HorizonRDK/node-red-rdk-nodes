@@ -3,6 +3,9 @@
         "label" : {
             "camerapi" : "CameraPi",
             "cameratype": "Camera Type",
+            "fps": "FPS",
+            "port": "PORT",
+            "defport": "Default Port",
             "filename" : "File Name",
             "filedefpath" : "File default path", 
             "filepath" : "File Path", 
@@ -54,13 +57,16 @@
             "contrast" : "-100 to 100",
             "sharpness" : "-100 to 100",
             "quality" : "80",
-            "name" : "Take photo node"
+            "name" : "Take photo node",
+            "port" : "3000 - 65535"
         },
         "errors" : {
             "invalidPath": "Invalid path!",
             "invalidFileName": "Invalid file name!",
+            "invalidPort": "Invalid port!",
             "badEnv": "Lack of lib for camera!",
-            "badCamera": "Open camera failed!"
+            "badCamera": "Open camera failed!",
+            "badConnection": "Establish connection failed!"
         }
     }
 }
