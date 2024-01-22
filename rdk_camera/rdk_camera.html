@@ -130,7 +130,7 @@
     });
 </script>
 
-<!-- <script type="text/x-red" data-template-name="rdk-camera imagestream">
+<script type="text/x-red" data-template-name="rdk-camera imagestream">
     <div class="form-row node-input-cameratype">
         <label for="node-input-cameratype"><i class="fa"></i> <span data-i18n="rdk-camera.label.cameratype"></span></label>
         <select id="node-input-cameratype">
@@ -142,7 +142,7 @@
         <label for="node-input-fps"><i class="fa fa-camera"></i> <span data-i18n="rdk-camera.label.fps"></span></label>
         <select id="node-input-fps" value="2">
            <option value="1">30</option>
-           <option value="2">20</option>
+           <option value="2">15</option>
            <option value="3">10</option>
            <option value="4">5</option>
            <option value="5">2</option>
@@ -181,15 +181,15 @@
         <label for="node-input-name"><i class="fa fa-tag"></i> <span data-i18n="rdk-camera.label.name"></span></label>
         <input type="text" id="node-input-name" data-i18n="[placeholder]rdk-camera.placeholder.name" style="width: 296px;">
     </div>
-</script> -->
+</script>
 
-<!-- <script type="text/javascript">
+<script type="text/javascript">
     RED.nodes.registerType("rdk-camera imagestream",{
         category: "RDK Camera",
         color: "#41CAF6",
         defaults: {
             cameratype: {value:"0", required: true},
-            fps: {value:"2", required:true},
+            fps: {value:"4", required:true},
             resolution: {value:"2", required:true},
             defport: {value:"1", required:true},
             port: {value:"10888", required:true},
@@ -226,4 +226,4 @@
             return this.name || "image stream node";
         }
     });
-</script> -->
+</script>

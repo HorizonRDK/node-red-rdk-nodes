@@ -276,7 +276,7 @@ module.exports = function(RED) {
                 wsClient.on('close', function(){
                     node.wsConnection = null;
                     RED.log.warn('connection closed');
-                    node.status({fill:"red",shape:"ring",text:"rdk-camera.errors.badConnection"});
+                    node.status({fill:"grey",shape:"ring",text:"rdk-camera.errors.badConnection"});
                 })
                 wsClient.on('message', function message(data){
                     node.send({
@@ -335,7 +335,7 @@ module.exports = function(RED) {
                 fps = 30;
                 break;
             case '2':
-                fps = 20;
+                fps = 15;
                 break;
             case '3':
                 fps = 10;
@@ -423,5 +423,5 @@ module.exports = function(RED) {
     }
 
     RED.nodes.registerType('rdk-camera takephoto', RDKCameraTakePhotoNode);
-    // RED.nodes.registerType('rdk-camera imagestream', RDKCameraImageStreamNode);
+    RED.nodes.registerType('rdk-camera imagestream', RDKCameraImageStreamNode);
 }
