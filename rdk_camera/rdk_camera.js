@@ -144,6 +144,16 @@ module.exports = function(RED) {
                 readyForAll = false;
             }
         }
+        else{
+            if(!fs.existsSync(imagePath)){
+                fs.mkdirSync(imagePath, { recursive: true});
+                if(!fs.existsSync(imagePath)){
+                    RED.log.warn(RED._("rdk-camera.errors.invalidPath"));
+                    node.status({fill:"grey",shape:"ring",text:"rdk-camera.errors.invalidPath"});
+                    readyForAll = false;
+                }
+            }
+        }
 
         if(this.filemode === '1'){
             if(this.filename && this.filename.trim() !== '' && this.filename.lastIndexOf('.jpg') === (this.filename.length - 4)){

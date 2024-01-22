@@ -26,13 +26,14 @@ enc = libsrcampy.Encoder()
 enc.encode(0, 3, width, height)
 
 def latest_buffer(cam):
-	while True:
-		t1 = perf_counter()
-		cam_data = cam.get_img(2, width, height)
-		t2 = perf_counter()
-		if (t2 - t1) > 0.01:
-			return cam_data
-
+    while True:
+        t1 = perf_counter()
+        cam_data = cam.get_img(2, width, height)
+        t2 = perf_counter()
+        # print('interval: ', t2 - t1)
+        if (t2 - t1) > 0.01:
+            return cam_data
+    
 def get_datetime_str():
     now = datetime.datetime.now()
     return now.strftime('%Y%m%d-%H%M%S')	
@@ -40,7 +41,7 @@ def get_datetime_str():
 def test_camera_bind_display_hdmi(host_idx):
      #camera start
     cam = libsrcampy.Camera()
-    ret = cam.open_cam(0, host_idx, 30, width, height)
+    ret = cam.open_cam(0, host_idx, 10, width, height)
     #print("Camera open_cam return:%d" % ret)
     if(ret != 0):
         print('failed')
