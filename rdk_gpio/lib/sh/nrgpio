@@ -6,4 +6,4 @@ command -v python3 > /dev/null || python_cmd='python'
 
 BASEDIR=$(dirname $0)
 
-$python_cmd -u $BASEDIR/nrgpio.py $@
+$python_cmd -u $BASEDIR/../python/nrgpio.py $@

@@ -7,4 +7,4 @@ command -v python3 > /dev/null || python_cmd='python'
 echo "python command: " $python_cmd
 
 BASEDIR=$(dirname $0)
-$python_cmd -u $BASEDIR/gpiochecker.py $@
+$python_cmd -u $BASEDIR/../python/gpiochecker.py $@

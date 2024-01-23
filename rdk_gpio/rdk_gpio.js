@@ -7,13 +7,12 @@ module.exports = function(RED) {
 
     
 
-    var testCommand = __dirname+'/gpiochecker';
-    var gpioCommand = __dirname+'/nrgpio';
-    var gpioCommandSudo = __dirname+'/nrgpiosudo';
-    var killCommand = 'sudo kill ';
+    var testCommand = __dirname+'/lib/sh/gpiochecker';
+    var gpioCommand = __dirname+'/lib/sh/nrgpio';
+    var gpioCommandSudo = __dirname+'/lib/sh/nrgpiosudo';
     var allOK = true;
 
-    console.log('in rdk-gpio module')
+    RED.log.info('Loading rdk-gpio nodes...')
     
     try {
         execSync(testCommand);

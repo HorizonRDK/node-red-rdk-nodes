@@ -1,6 +1,6 @@
 {
   "name": "node-red-node-rdk-camera",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Node Red node for using camera on a RDK hardware",
   "license": "Apache-2.0",
   "main": "none",
