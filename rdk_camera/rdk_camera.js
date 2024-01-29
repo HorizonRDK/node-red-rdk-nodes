@@ -72,17 +72,23 @@ module.exports = function(RED) {
                 if(dataStr.indexOf('failed') >= 0){
                     node.status({fill:"red",shape:"ring",text:"rdk-camera.errors.badCamera"});
                 }
-                else if(dataStr.indexOf('ready') >= 0){
+                else if(dataStr.indexOf('fileready') >= 0){
                     var url = dataStr.split(' ')[1];
                     url = url.replace(/\r?\n/g, '');
                     node.send({
                         payload: url
                     })
                 }
+                else if(dataStr.indexOf('stopped') >= 0){
+                    node.status({fill:"yellow",shape:"dot",text:"rdk-camera.status.stopped"})
+                }
+                else if(dataStr.indexOf('working') >= 0){
+                    node.status({fill:"green",shape:"dot",text:"rdk-camera.status.working"})
+                }
             })
 
             //hint
-            node.status({fill:"green",shape:"dot",text:"working"});
+            node.status({fill:"green",shape:"dot",text:"rdk-camera.status.working"});
         }
 
         function startUsbCamera(params){
@@ -200,7 +206,12 @@ module.exports = function(RED) {
             
             node.on('input', function(msg){
                 if(node.child && node.running){
-                    node.child.stdin.write('save\n');
+                    if(msg.payload === 'start' || msg.payload === 'stop'){
+                        node.child.stdin.write(msg.payload+'\n');
+                    }
+                    else{
+                        node.child.stdin.write('save\n');
+                    }
                 }
             })
 
@@ -252,17 +263,7 @@ module.exports = function(RED) {
         var fps = 20;
         var port = 10888;
 
-        function startMipiImageStream(params){
-            node.child = spawn(mipiStreamCommandSudo, params);
-            node.running = true;
-
-            node.child.stdout.on('data', function(data){
-                var dataStr = data.toString();
-                if(dataStr.indexOf('failed') >= 0){
-                    node.status({fill:"red",shape:"ring",text:"rdk-camera.errors.badCamera"});
-                }
-            })
-
+        function establishWsConnection(){
             setTimeout(function(){
                 var wsClient = new WebSocket('ws://localhost:'+port);
                 wsClient.on('error', function(error){
@@ -271,7 +272,7 @@ module.exports = function(RED) {
                 })
                 wsClient.on('open', function(){
                     node.wsConnection = wsClient;
-                    node.status({fill:"green",shape:"dot",text:"working"});
+                    node.status({fill:"green",shape:"dot",text:"rdk-camera.status.working"});
                 })
                 wsClient.on('close', function(){
                     node.wsConnection = null;
@@ -284,6 +285,24 @@ module.exports = function(RED) {
                     })
                 })
             }, 1000)
+        }
+
+        function startMipiImageStream(params){
+            node.child = spawn(mipiStreamCommandSudo, params);
+            node.running = true;
+
+            node.child.stdout.on('data', function(data){
+                var dataStr = data.toString();
+                if(dataStr.indexOf('failed') >= 0){
+                    node.status({fill:"red",shape:"ring",text:"rdk-camera.errors.badCamera"});
+                }
+            })
+
+            node.child.on('close', function(){
+                node.status({fill:"red",shape:"ring",text:"rdk-camera.errors.badCamera"});
+            })
+
+            establishWsConnection();
             
         }
 
@@ -398,6 +417,24 @@ module.exports = function(RED) {
             else{
                 startMipiImageStream(params);
             }
+
+            node.on('input', function(msg){
+                if(msg.payload === 'stop'){
+                    if(node.wsConnection){
+                        node.wsConnection.terminate();
+                        node.wsConnection = null;
+                        setTimeout(function(){
+                            node.status({fill:"yellow",shape:"dot",text:"rdk-camera.status.stopped"});
+                        }, 50)
+                    }
+                }
+                else if(msg.payload === 'start'){
+                    if(!node.wsConnection){
+                        establishWsConnection();
+                        
+                    }
+                }
+            })
 
             node.on('close', function(done){
                 if(node.wsConnection){

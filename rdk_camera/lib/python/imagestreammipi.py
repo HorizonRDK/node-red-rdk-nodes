@@ -5,6 +5,7 @@ import asyncio
 import sys
 import os
 
+
 width = int(sys.argv[1])
 height = int(sys.argv[2])
 fps = int(sys.argv[3])
@@ -24,25 +25,26 @@ async def send_image_stream(websocket, path):
     #print("Camera open_cam return:%d" % ret)
     if(ret != 0):
         print('failed')
-        sys.exit(0)
-    
+        await websocket.close(reason='exit')
+        
     count = 1
-    while True:
-        origin_image = cam.get_img(2, width, height)
+    try:
+        while True:
+            origin_image = cam.get_img(2, width, height)
 
-        if(count%fcount != 0):
-            count += 1
-            continue
-        else:
-            count = 1
+            if(count%fcount != 0):
+                count += 1
+                continue
+            else:
+                count = 1
 
-        enc.encode_file(origin_image)
-        img_data = enc.get_img()
+            enc.encode_file(origin_image)
+            img_data = enc.get_img()
 
-        await websocket.send(img_data)
+            await websocket.send(img_data)
+    except:
+        cam.close_cam()
 
-    enc.close()
-    cam.close_cam()
 
 if __name__ == '__main__':
     signal.signal(signal.SIGINT, signal_handler)

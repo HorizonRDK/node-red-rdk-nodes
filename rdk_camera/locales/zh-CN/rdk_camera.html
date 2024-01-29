@@ -2,7 +2,7 @@
     <p>RDK Camera拍照节点。</p>
     <h3>输入</h3>
     <dl class="message-properties">
-        <dt>payload <span class="property-type">any</span></dt>
+        <dt>payload <span class="property-type">any | string ('start'/'stop')</span></dt>
     </dl>
     <h3>输出</h3>
     <dl class="message-properties">
@@ -10,11 +10,34 @@
     </dl>
     <h3>描述</h3>
     <p>该节点的输入部分目前对字段和取值没有特定要求，主要将输入的时间点作为触发拍照的事件。</p>
+    <p>在0.0.5版本后, 可以输入'stop'或'start'暂停和启动摄像头。</p>
     <p>该节点的输出部分会将图片保存的全路径文件名放在<code>msg.payload</code>中输出。</p>
     <p>在使用拍照节点时可以进行几项配置：</p>
     <ul>
         <li>文件模式：自动生成文件/自定义文件名（自定义模式下仅保存最新的图片文件）</li>
         <li>保存路径：默认<code>~/Pictures</code>, 亦可自定义路径</li>
         <li>分辨率：默认640x480</li>
+    </ul>
+</script>
+
+<script type="text/html" data-help-name="rdk-camera imagestream">
+    <p>RDK Camera图片流节点。</p>
+    <h3>输入</h3>
+    <dl class="message-properties">
+        <dt>payload <span class="property-type">any | string ('start'/'stop')</span></dt>
+    </dl>
+    <h3>输出</h3>
+    <dl class="message-properties">
+        <dt>payload <span class="property-type">base64</span></dt>
+    </dl>
+    <h3>描述</h3>
+    <p>该节点的输入部分仅在值为'start'或'stop'时会有效果, 输入其他值将被自动忽略。</p>
+    <p>该节点的输出部分会将base64格式的图像数据放在<code>msg.payload</code>中输出。</p>
+    <p>在使用图片流节点时可以进行几项配置：</p>
+    <ul>
+        <li>帧率：默认5fps, 更高帧率会</li>
+        <li>分辨率：默认640x480</li>
+        <li>默认端口号：默认使用10888，可以指定自定义端口号</li>
+
     </ul>
 </script>

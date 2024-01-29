@@ -49,7 +49,11 @@
             "no" : "No",
             "on" : "On",
             "off" : "Off"
-        }, 
+        },
+        "status" : {
+            "working": "working",
+            "stopped": "paused"
+        },
         "placeholder" : {
             "filename" : "Filename with extension",
             "filepath" : "Full filepath",

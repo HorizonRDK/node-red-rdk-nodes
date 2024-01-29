@@ -49,7 +49,11 @@
             "no" : "否",
             "on" : "开",
             "off" : "关"
-        }, 
+        },
+        "status" : {
+            "working": "运行中",
+            "stopped": "暂停中"
+        },
         "placeholder" : {
             "filename" : "带后缀的文件名(*.jpg)",
             "filepath" : "完整文件路径(要求是存在的目录)",

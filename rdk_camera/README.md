@@ -1,5 +1,6 @@
 # node-red-node-rdk-camera
-在Node-RED中配合地平线RDK硬件使用的Camera相关功能节点。
+在Node-RED中配合地平线RDK硬件使用的Camera相关功能的节点。
+
 
 ## 安装
 可以在Node-RED编辑器中的节点管理面板中进行安装。也可以进入node-red安装目录进行手动安装：
@@ -17,4 +18,4 @@
 
 ## 注意
 + rdk-camera中的节点需要与地平线RDK相关硬件及系统配合使用。[链接](https://developer.horizon.cc/)
-+ 目前rdk-camera中的节点在每个flow中只能使用一个，不可以多个同时使用。（一个节点代表一个视频流，多个节点同时使用会造成冲突）
++ 目前rdk-camera中的节点在每个不可以多个同时使用,在一个flow中同时存在多个节点时，要保证最多只有一个处于运行状态。（一个节点代表一个视频流，多个节点同时使用会造成冲突）

@@ -2,7 +2,7 @@
     <p>RDK Camera Take Photo Node</p>
     <h3>Input</h3>
     <dl class="message-properties">
-        <dt>payload <span class="property-type">any</span></dt>
+        <dt>payload <span class="property-type">any | string ('stop'/'start')</span></dt>
     </dl>
     <h3>Output</h3>
     <dl class="message-properties">
@@ -16,5 +16,26 @@
         <li>File Mode: AutoMode/CustomMode(Only save the latest image file)</li>
         <li>File Path: Default path is <code>~/Pictures</code>, custom path is also available.</li>
         <li>Resolution: Default 640x480</li>
+    </ul>
+</script>
+
+<script type="text/html" data-help-name="rdk-camera imagestream">
+    <p>RDK Camera Image Stream Node</p>
+    <h3>Input</h3>
+    <dl class="message-properties">
+        <dt>payload <span class="property-type">any | string ('stop'/'start')</span></dt>
+    </dl>
+    <h3>Output</h3>
+    <dl class="message-properties">
+        <dt>payload <span class="property-type">base64</span></dt>
+    </dl>
+    <h3>Details</h3>
+    <p>This node takes 'stop' or 'start' as switch of camera. </p>
+    <p>This node outputs base64 data with <code>msg.payload</code>.</p>
+    <p>Settings:</p>
+    <ul>
+        <li>FPS: Default 5fps</li>
+        <li>Resolution: Default 640x480</li>
+        <li>Port: Default 10888</li>
     </ul>
 </script>

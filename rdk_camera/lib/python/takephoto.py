@@ -39,13 +39,14 @@ def get_datetime_str():
     return now.strftime('%Y%m%d-%H%M%S')	
 
 def test_camera_bind_display_hdmi(host_idx):
+    state = 'working'
      #camera start
     cam = libsrcampy.Camera()
     ret = cam.open_cam(0, host_idx, 10, width, height)
     #print("Camera open_cam return:%d" % ret)
     if(ret != 0):
         print('failed')
-        sys.exit(0)
+        state = 'stopped'
 
     while True:
         try:
@@ -54,7 +55,28 @@ def test_camera_bind_display_hdmi(host_idx):
                 enc.close()
                 cam.close_cam()
                 sys.exit(0)
+            elif 'stop' in data:
+                if state == 'working':
+                    cam.close_cam()
+                    print('stopped')
+                    state = 'stopped'
+                else:
+                    continue
+            elif 'start' in data:
+                if state == 'stopped':
+                    cam = libsrcampy.Camera()
+                    ret = cam.open_cam(0, host_idx, 10, width, height)
+                    #print("Camera open_cam return:%d" % ret)
+                    if(ret != 0):
+                        print('failed')
+                        sys.exit(0)
+                    state = 'working'
+                    print('working')
+                else:
+                    continue
             if 'save' in data:
+                if state == 'stopped':
+                   continue
                 if autoName:
                     nameStr = 'image-' + get_datetime_str() + '.jpg'
                 else:
@@ -67,7 +89,7 @@ def test_camera_bind_display_hdmi(host_idx):
                 if img_data is not None:
                     fo.write(img_data)
                 fo.close()
-                print('ready ' + nameStr)
+                print('fileready ' + nameStr)
         except (EOFError, SystemExit):
             enc.close()
             cam.close_cam()
