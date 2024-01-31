@@ -7,7 +7,7 @@ command -v python3 > /dev/null || python_cmd='python'
 BASEDIR=$(dirname $0)
 
 if [ $(id -u) = "0" ]; then
-    $python_cmd -u $BASEDIR/../python/takephoto.py $@
+    $python_cmd -u $BASEDIR/../python/imagestreamusb.py $@
 else
-    sudo $python_cmd -u $BASEDIR/../python/takephoto.py $@
+    sudo $python_cmd -u $BASEDIR/../python/imagestreamusb.py $@
 fi

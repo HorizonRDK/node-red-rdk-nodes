@@ -9,11 +9,11 @@ module.exports = function(RED) {
     var WebSocket = require('ws');
 
     const mipiCameraChecker = __dirname + '/lib/sh/mipicamerachecker';
-    const usbCameraChecker = __dirname + '';
+    const usbCameraChecker = __dirname + '/lib/sh/usbcamerachecker';
 	const mipiCameraCommandSudo = __dirname + '/lib/sh/nrmipitakephotosudo';
-    const usbCameraCommand = __dirname + '';
+    const usbCameraCommand = __dirname + '/lib/sh/nrusbtakephoto';
     const mipiStreamCommandSudo = __dirname + '/lib/sh/nrmipistreamsudo';
-    const usbStreamCommandSudo = __dirname + '';
+    const usbStreamCommand = __dirname + '/lib/sh/nrusbstream';
 
     RED.log.info('Loading rdk-camera nodes...')
 
@@ -61,9 +61,9 @@ module.exports = function(RED) {
         var node = this;
         var readyForAll = true;
 
-        function startMipiCamera(params){
+        function startCamera(command, params){
             //spawn
-            node.child = spawn(mipiCameraCommandSudo, params);
+            node.child = spawn(command, params);
             node.running = true;
 
             //child stdout on
@@ -91,8 +91,12 @@ module.exports = function(RED) {
             node.status({fill:"green",shape:"dot",text:"rdk-camera.status.working"});
         }
 
-        function startUsbCamera(params){
+        function startMipiCamera(params){
+            startCamera(mipiCameraCommandSudo, params);
+        }
 
+        function startUsbCamera(params){
+            startCamera(usbCameraCommand, params);
         }
 
         // step 1: pick necessary variables
@@ -185,7 +189,7 @@ module.exports = function(RED) {
         }
 
         try{
-            execSync(mipiCameraChecker)
+            execSync(cameraChecker)
         }
         catch(e){
             RED.log.warn(RED._("rdk-camera.errors.badEnv"));
@@ -287,8 +291,8 @@ module.exports = function(RED) {
             }, 1000)
         }
 
-        function startMipiImageStream(params){
-            node.child = spawn(mipiStreamCommandSudo, params);
+        function startImageStream(command, params){
+            node.child = spawn(command, params);
             node.running = true;
 
             node.child.stdout.on('data', function(data){
@@ -306,8 +310,12 @@ module.exports = function(RED) {
             
         }
 
-        function startUsbImageStream(params){
+        function startMipiImageStream(params){
+            startImageStream(mipiStreamCommandSudo, params);
+        }
 
+        function startUsbImageStream(params){
+            startImageStream(usbStreamCommand, params);
         }
 
         switch (this.resolution) {
@@ -397,7 +405,7 @@ module.exports = function(RED) {
         }
 
         try{
-            execSync(mipiCameraChecker)
+            execSync(cameraChecker)
         }
         catch(e){
             RED.log.warn(RED._("rdk-camera.errors.badEnv"));
