@@ -5,6 +5,14 @@
         },
         "placeholder": {
             "name": "YOLOv3"
+        },
+        "errors": {
+            "badEnv": "Lack of dependencies!",
+            "badInput": "Invalid input!",
+            "badOutput": "Invalid output!"
+        },
+        "status": {
+            "working": "working"
         }
     }
 }

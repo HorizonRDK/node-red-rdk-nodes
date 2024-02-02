@@ -8,6 +8,8 @@ module.exports = function(RED) {
 
     const visionChecker = __dirname + '/lib/sh/visionchecker';
     const yolov3CommandSudo = __dirname + '/lib/sh/nryolov3sudo';
+    const yolov5CommandSudo = __dirname + '/lib/sh/nryolov5sudo';
+    const unetCommandSudo = __dirname + '/lib/sh/nrunetsudo';
 
     RED.log.info('Loading rdk-vision nodes...')
 
@@ -24,73 +26,77 @@ module.exports = function(RED) {
         return;
     }
 
-    function RDKVisionYolov3Node(config) {
-        // Create this node
-        RED.nodes.createNode(this,config);
-
-        this.name =  config.name;
-        var node = this;
-
-        try{
-            execSync(visionChecker)
-        }
-        catch(e){
-            RED.log.warn(RED._("rdk-vision.errors.badEnv"));
-            node.status({fill:"red",shape:"ring",text:"rdk-vision.errors.badEnv"});
-            readyForAll = false;
-        }
-
-        process.env.PYTHONUNBUFFERED = 1;
-
-        node.child = spawn(yolov3CommandSudo);
-        node.running = true;
-        node.child.stdout.on('data', function(data){
-            var dataStr = data.toString();
-            dataStr = dataStr.replace(/\r?\n/g, '');
-            if(dataStr.indexOf('notavailable') >= 0){
-                node.status({fill:"yellow",shape:"ring",text:"rdk-vision.errors.badOutput"});
+    function generateVisionNode(command){
+        return function RDKVisionBasicNode(config) {
+            // Create this node
+            RED.nodes.createNode(this,config);
+    
+            this.name =  config.name;
+            var node = this;
+    
+            try{
+                execSync(visionChecker)
             }
-            else if(dataStr.indexOf('[') >= 0){
-                //skip
+            catch(e){
+                RED.log.warn(RED._("rdk-vision.errors.badEnv"));
+                node.status({fill:"red",shape:"ring",text:"rdk-vision.errors.badEnv"});
+                readyForAll = false;
             }
-            else if(fs.existsSync(dataStr)){
-                console.log('send: ', dataStr)
-                node.send({
-                    payload: dataStr
-                });
-            }
-        })
-        node.status({fill:"green",shape:"dot",text:"rdk-vision.status.working"});
-
-        node.on('input', function(msg){
-            if(node.child && node.running){
-                if(fs.existsSync(msg.payload)){
-                    console.log('exists: ', msg.payload)
-                    node.child.stdin.write(msg.payload + '\n');
+    
+            process.env.PYTHONUNBUFFERED = 1;
+    
+            node.child = spawn(command);
+            node.running = true;
+            node.child.stdout.on('data', function(data){
+                var dataStr = data.toString();
+                dataStr = dataStr.replace(/\r?\n/g, '');
+                if(dataStr.indexOf('notavailable') >= 0){
+                    node.status({fill:"yellow",shape:"ring",text:"rdk-vision.errors.badOutput"});
+                }
+                else if(dataStr.indexOf('[') >= 0){
+                    //skip
+                }
+                else if(fs.existsSync(dataStr)){
+                    node.send({
+                        payload: dataStr
+                    });
+                }
+            })
+            node.status({fill:"green",shape:"dot",text:"rdk-vision.status.working"});
+    
+            node.on('input', function(msg){
+                if(node.child && node.running){
+                    if(fs.existsSync(msg.payload)){
+                        node.child.stdin.write(msg.payload + '\n');
+                    }
+                    else{
+                        node.status({fill:"yellow",shape:"ring",text:"rdk-vision.errors.badInput"});
+                    }
+                }
+            })
+    
+            node.on('close', function(done){
+                node.status({});
+                
+                if(node.child){
+                    node.finished = done;
+                    node.child.stdin.write('close\n');
+                    var pids = [node.child.pid.toString()];
+                    getChildPids(node.child.pid, pids);
+                    execSync('sudo kill -9 ' + pids.join(' '));
+                    node.child = null;
+                    if(done) done();
                 }
                 else{
-                    node.status({fill:"yellow",shape:"ring",text:"rdk-vision.errors.badInput"});
+                    if(done) done();
                 }
-            }
-        })
-
-        node.on('close', function(done){
-            node.status({});
-            
-            if(node.child){
-                node.finished = done;
-                node.child.stdin.write('close\n');
-                var pids = [node.child.pid.toString()];
-                getChildPids(node.child.pid, pids);
-                execSync('sudo kill -9 ' + pids.join(' '));
-                node.child = null;
-                if(done) done();
-            }
-            else{
-                if(done) done();
-            }
-        })
+            })
+        }
     }
+    
 
-    RED.nodes.registerType('rdk-vision yolov3', RDKVisionYolov3Node);
+    RED.nodes.registerType('rdk-vision yolov3', generateVisionNode(yolov3CommandSudo));
+    RED.nodes.registerType('rdk-vision yolov5', generateVisionNode(yolov5CommandSudo));
+    RED.nodes.registerType('rdk-vision unet', generateVisionNode(unetCommandSudo));
+
 }
