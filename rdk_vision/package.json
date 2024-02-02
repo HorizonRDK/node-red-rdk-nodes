@@ -1,0 +1,45 @@
+{
+  "name": "node-red-node-rdk-vision",
+  "version": "0.0.1",
+  "description": "Node Red node for using vision algorithms on a RDK hardware",
+  "license": "Apache-2.0",
+  "main": "none",
+  "keywords": [
+    "node-red",
+    "rdk",
+    "x3",
+    "vision",
+    "algorithm"
+  ],
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/HorizonRDK/node-red-rdk-nodes"
+  },
+  "node-red": {
+    "version": ">=3.1.3",
+    "nodes": {
+      "rdk-camera": "rdk_vision.js"
+    }
+  },
+  "author": "WYP",
+  "bugs": {
+    "url": ""
+  },
+
+  "homepage": "https://developer.horizon.cc/",
+  "directories": {
+    "lib": "lib"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  }
+}

@@ -1,0 +1,10 @@
+{
+    "rdk-vision" : {
+        "label": {
+            "name": "Name"
+        },
+        "placeholder": {
+            "name": "YOLOv3"
+        }
+    }
+}

@@ -1,0 +1,18 @@
+{
+    "rdk-vision" : {
+        "label": {
+            "name": "名称"
+        },
+        "placeholder": {
+            "name": "YOLOv3"
+        },
+        "errors": {
+            "badEnv": "依赖缺失，请检查！",
+            "badInput": "输入有误，请检查！",
+            "badOutput": "输出有误，请检查！"
+        },
+        "status": {
+            "working": "运行中"
+        }
+    }
+}
