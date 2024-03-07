@@ -1,6 +1,6 @@
 {
   "name": "node-red-node-rdk-camera",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "description": "搭配RDK硬件使用摄像头的Node-RED节点(Node-RED node for using camera on a RDK hardware)",
   "license": "Apache-2.0",
   "main": "none",
@@ -18,7 +18,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/HorizonRDK/node-red-rdk-nodes"
+    "url": "https://github.com/HorizonRDK/node-red-rdk-nodes/rdk_camera"
   },
   "node-red": {
     "version": ">=3.1.3",
