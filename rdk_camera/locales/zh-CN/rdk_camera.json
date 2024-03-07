@@ -1,9 +1,13 @@
 {
     "rdk-camera" : {
+        "names": {
+            "imagestream": "图像流",
+            "takephoto": "拍照"
+        },
         "label" : {
             "camerapi" : "CameraPi",
             "cameratype": "摄像头类型",
-            "fps": "帧率",
+            "fps": "采样率",
             "port": "端口号",
             "defport": "默认端口号",
             "filename" : "文件名",

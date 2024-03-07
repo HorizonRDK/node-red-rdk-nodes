@@ -1,7 +1,7 @@
 {
   "name": "node-red-node-rdk-camera",
-  "version": "0.0.6",
-  "description": "Node Red node for using camera on a RDK hardware",
+  "version": "0.0.7",
+  "description": "搭配RDK硬件使用摄像头的Node-RED节点(Node-RED node for using camera on a RDK hardware)",
   "license": "Apache-2.0",
   "main": "none",
   "keywords": [

@@ -11,11 +11,15 @@
     <h3>Details</h3>
     <p>This node takes input as camera trigger. </p>
     <p>This node output image url with <code>msg.payload</code>.</p>
-    <p>Settings:</p>
+    <h3>Settings:</h3>
     <ul>
+        <li>Camera Type: MIPI(default)/USB</li>
         <li>File Mode: AutoMode/CustomMode(Only save the latest image file)</li>
-        <li>File Path: Default path is <code>~/Pictures</code>, custom path is also available.</li>
+        <li>File Name: Use with CustomMode. The file name must end with '.jpg'. </li>
+        <li>File Default Path: Default path is <code>~/Pictures</code>, custom path is also available.</li>
+        <li>File Path: Use with CustomPath. The file path must exist.</li>
         <li>Resolution: Default 640x480</li>
+        <li>Name: Optional</li>
     </ul>
 </script>
 
@@ -32,10 +36,13 @@
     <h3>Details</h3>
     <p>This node takes 'stop' or 'start' as switch of camera. </p>
     <p>This node outputs base64 data with <code>msg.payload</code>.</p>
-    <p>Settings:</p>
+    <h3>Settings:</h3>
     <ul>
-        <li>FPS: Default 5fps</li>
+        <li>Camera Type: MIPI(default)/USB</li>
+        <li>Sample Rate: Default sample rate is 1/6, several opitons are distributing form 1/30 to 1.</li>
         <li>Resolution: Default 640x480</li>
-        <li>Port: Default 10888</li>
+        <li>Default Port: Default 10888, custom port is available.</li>
+        <li>Port: Use with CustomPort.</li>
+        <li>Name: Optional</li>
     </ul>
 </script>

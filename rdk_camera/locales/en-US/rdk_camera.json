@@ -1,9 +1,13 @@
 {
     "rdk-camera" : {
+        "names": {
+            "imagestream": "image stream",
+            "takephoto": "take photo"
+        },
         "label" : {
             "camerapi" : "CameraPi",
             "cameratype": "Camera Type",
-            "fps": "FPS",
+            "fps": "Sample Rate",
             "port": "PORT",
             "defport": "Default Port",
             "filename" : "File Name",

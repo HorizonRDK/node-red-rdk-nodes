@@ -36,7 +36,7 @@ def latest_buffer(cam):
     
 def get_datetime_str():
     now = datetime.datetime.now()
-    return now.strftime('%Y%m%d-%H%M%S')	
+    return now.strftime('%Y%m%d-%H%M%S')
 
 def test_camera_bind_display_hdmi(host_idx):
     state = 'working'

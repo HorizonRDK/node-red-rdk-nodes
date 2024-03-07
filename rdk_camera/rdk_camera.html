@@ -125,7 +125,7 @@
             });
         },
         label: function() {
-            return this.name || "take photo node";
+            return this.name || this._('rdk-camera.names.takephoto');
         }
     });
 </script>
@@ -142,12 +142,12 @@
     <div class="form-row node-input-fps">
         <label for="node-input-fps"><i class="fa fa-camera"></i> <span data-i18n="rdk-camera.label.fps"></span></label>
         <select id="node-input-fps" value="2">
-           <option value="1">30</option>
-           <option value="2">15</option>
-           <option value="3">10</option>
-           <option value="4">5</option>
-           <option value="5">2</option>
-           <option value="6">1</option>
+           <option value="1">1</option>
+           <option value="2">1/2</option>
+           <option value="3">1/3</option>
+           <option value="4">1/6</option>
+           <option value="5">1/15</option>
+           <option value="6">1/30</option>
        </select>
    </div>
 
@@ -224,7 +224,7 @@
             });
         },
         label: function() {
-            return this.name || "image stream node";
+            return this.name || this._('rdk-camera.names.imagestream');
         }
     });
 </script>
