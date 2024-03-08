@@ -350,7 +350,7 @@ module.exports = function(RED) {
                         var act = "up";
                         if (b[1] === "1") { act = "down"; }
                         if (b[1] === "2") { act = "repeat"; }
-                        node.send({ topic:"pi/key", payload:Number(b[0]), action:act });
+                        node.send({ topic:"io/key", payload:Number(b[0]), action:act });
                     }
                 }
             });

@@ -1,7 +1,7 @@
 {
   "name": "node-red-node-rdk-gpio",
-  "version": "0.0.1",
-  "description": "The basic Node-RED node for RDK GPIO",
+  "version": "0.0.2",
+  "description": "配合RDK硬件使用GPIO功能的功能包(The basic Node-RED node for RDK GPIO)",
   "license": "Apache-2.0",
   "main": "none",
   "scripts": {
@@ -16,7 +16,7 @@
   "author": "WYP",
   "repository": {
     "type": "git",
-    "url": "https://github.com/HorizonRDK/node-red-rdk-nodes"
+    "url": "https://github.com/HorizonRDK/node-red-rdk-nodes/tree/develop/rdk_gpio"
   },
   "node-red": {
     "version": ">=3.1.3",

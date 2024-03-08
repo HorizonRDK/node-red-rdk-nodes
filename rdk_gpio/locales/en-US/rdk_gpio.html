@@ -1,39 +1,79 @@
-
-<script type="text/html" data-help-name="rdk-gpio in">
-    <p>RDK GPIO input node. Generates a <code>msg.payload</code> with either a
-    0 or 1 depending on the state of the input pin.</p>
-    <h3>Outputs</h3>
-    <dl class="message-properties">
-        <dt>payload <span class="property-type">number</span></dt>
-        <dd>the payload will be a 1 or a 0.</dd>
-        <dt>topic <span class="property-type">string</span></dt>
-        <dd>the topic will be set to <code>gpio/{the bcm spio number}</code>.</dd>
-    </dl>
-    <h3>Details</h3>
-    <p>You may also enable the input pullup resistor or the pulldown resistor.</p>
-    <p>Requires the Hobot.GPIO python library version x.x.x (or better) in order to work.</p>
-</script>
-
 <script type="text/html" data-help-name="rdk-gpio out">
-    <p>RDK GPIO output node. Can be used in Digital mode.</p>
+    <p>RDK GPIO output node</p>
     <h3>Inputs</h3>
     <dl class="message-properties">
         <dt>payload <span class="property-type">number | string | boolean</span></dt>
+    </dl>
+    <h3>Outputs</h3>
+    <dl class="message-properties">
+        none
     </dl>
     <h3>Details</h3>
     <p>Digital mode - expects a <code>msg.payload</code> with either a 0 or 1 (or true or false),
     and will set the selected physical pin high or low depending on the value passed in.</p>
     <p>The initial value of the pin at deploy time can also be set to 0 or 1.</p>
+    <h3>Settings</h3>
+    <ul>
+        <li>PIN: Choose a specific pin through simulated 40-pins component.</li>
+        <li>BCM GPIO: Matched with chosen pin</li>
+        <li>Initialize State: The initial value of the pin at deploy time can also be set to 0 or 1.</li>
+        <li>Name: Custom name</li>
+    </ul>
+</script>
+
+<script type="text/html" data-help-name="rdk-gpio pwm">
+    <p>RDK GPIO PWM node</p>
+    <h3>Inputs</h3>
+    <dl class="message-properties">
+        <dt>payload <span class="property-type">number</span></dt>
+    </dl>
+    <h3>Outputs</h3>
+    <dl class="message-properties">
+        none
+    </dl>
+    <h3>Details</h3>
     <p>PWM mode - expects an input value of a number 0 - 100. It can be floating point.</p>
-    <p>PWM mode can be used to drive a servo using input values between 10 and 20 only,
-    but will accept floating point values.
-    The GPIO2 pin is best for this as it uses hardware to do the PWM. For better servo support
-    consider the alternative node-red-node-pi-gpiod node.</p>
-    <p>Requires the RPi.GPIO python library version 0.5.10 (or better) in order to work.</p>
+    <h3>Settings</h3>
+    <ul>
+        <li>PIN: Choose a specific pin through simulated 40-pins component.</li>
+        <li>BCM GPIO: Matched with chosen pin</li>
+        <li>Frequncy: 48KHz~192MHz, default is 48000Hz</li>
+        <li>Name: Custom name</li>
+    </ul>
+</script>
+
+<script type="text/html" data-help-name="rdk-gpio in">
+    <p>RDK GPIO input node</p>
+    <h3>Inputs</h3>
+    <dl class="message-properties">
+        none
+    </dl>
+    <h3>Outputs</h3>
+    <dl class="message-properties">
+        <dt>payload <span class="property-type">number</span></dt>
+        <dd>the payload will be a 1 or a 0.</dd>
+        <dt>topic <span class="property-type">string</span></dt>
+        <dd>the topic will be set to <code>gpio/{the bcm number}</code>.</dd>
+    </dl>
+    <h3>Details</h3>
+    <p>[experimental]You may also enable the input pullup resistor or the pulldown resistor.</p>
+    <h3>Settings</h3>
+    <ul>
+        <li>PIN: Choose a specific pin through simulated 40-pins component.</li>
+        <li>BCM GPIO: Matched with chosen pin</li>
+        <li>Resistor: [experimental]</li>
+        <li>Debounce: Default is 25ms.</li>
+        <li>Read Init State: Choose whether to read initial state.</li>
+        <li>Name: Custom Name</li>
+    </ul>
 </script>
 
 <script type="text/html" data-help-name="rdk-mouse">
-    <p>Raspberry Pi mouse button node. Requires a USB mouse.</p>
+    <p>RDK mouse button node [USB mouse is required.]</p>
+    <h3>Inputs</h3>
+    <dl class="message-properties">
+        none
+    </dl>
     <h3>Outputs</h3>
     <dl class="message-properties">
         <dt>payload <span class="property-type">number</span></dt>
@@ -42,12 +82,21 @@
         <dd>1, 2, 4 corresponding to left, right and middle buttons, so you
         can work out which button or combination was pressed.</dd>
         <dt>topic <span class="property-type">string</span></dt>
-        <dd>set to <code>pi/mouse</code></dd>
+        <dd>set to <code>io/mouse</code></dd>
     </dl>
+    <h3>Settings</h3>
+    <ul>
+        <li>Button: Pick a type from left, right, roll or all.</li>
+        <li>Name:  Custom name</li>
+    </ul>
 </script>
 
 <script type="text/html" data-help-name="rdk-keyboard">
-    <p>Raspberry Pi keyboard handling node. Requires a USB keyboard.</p>
+    <p>RDK keyboard handling node [USB keyboard is required]</p>
+    <h3>Inputs</h3>
+    <dl class="message-properties">
+        none
+    </dl>
     <h3>Outputs</h3>
     <dl class="message-properties">
         <dt>payload <span class="property-type">number</span></dt>
@@ -55,6 +104,10 @@
         <dt>action <span class="property-type">string</span></dt>
         <dd>set to "up", "down", or "repeat"</dd>
         <dt>topic <span class="property-type">string</span></dt>
-        <dd>set to <code>pi/key</code></dd>
+        <dd>set to <code>io/key</code></dd>
     </dl>
+    <h3>Settings</h3>
+    <ul>
+        <li>Name:  Custom name</li>
+    </ul>
 </script>

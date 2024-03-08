@@ -1,52 +1,116 @@
-
-<script type="text/html" data-help-name="rdk-gpio in">
-    <p>RDK GPIO输入节点。该节点会根据引脚的状态产生值为0或1的<code>msg.payload</code></p>
-    <h3>输出</h3>
-    <dl class="message-properties">
-        <dt>payload <span class="property-type">number</span></dt>
-        <dd>payload的值会是 1 或者 0。</dd>
-        <dt>topic <span class="property-type">string</span></dt>
-        <dd>the topic will be set to <code>gpio/{bcm引脚号}</code>.</dd>
-    </dl>
-    <h3>描述</h3>
-    <p>你可能需要确认下上拉电阻或下拉电阻的设置。</p>
-</script>
-
 <script type="text/html" data-help-name="rdk-gpio out">
-    <p>RDK GPIO数字输出节点。</p>
+    <p>RDK GPIO数字输出节点</p>
     <h3>输入</h3>
     <dl class="message-properties">
-        <dt>payload <span class="property-type">number | string | boolean</span></dt>
+        <dt>payload <span class="property-type">数字类型 | 布尔类型</span></dt>
+    </dl>
+    <h3>输出</h3>
+    <dl class="message-properties">
+        无
     </dl>
     <h3>描述</h3>
     <p>在数字输出模式下需要输入值 <code>msg.payload</code> 是0或1 (也可以是true或false),
         随后会将对应的物理针脚设置为与输入值匹配的高电平或者低电平。</p>
     <p>另外, 在部署时也可以将初始值设置为0或者1。</p>
     <p>该节点依赖RDK中名为Hobot.GPIO的python库。<a href="https://developer.horizon.cc/documents_rdk/python_development/40pin_user_guide/gpio">参考示例</a></p>
+    <h3>配置</h3>
+    <ul>
+        <li>针脚：以可视化的形式选择对应针脚</li>
+        <li>BCM GPIO：GPIO针脚对应BCM编码，与针脚保持一致</li>
+        <li>初始化状态：需要固定初始化状态时使用，可以指定0或1</li>
+        <li>名称：填写后可作为自定义节点名称使用</li>
+    </ul>
 </script>
 
-<script type="text/html" data-help-name="rdk-mouse">
-    <p>RDK鼠标按键节点。配合有线/无线USB鼠标使用。</p>
+<script type="text/html" data-help-name="rdk-gpio pwm">
+    <p>RDK GPIO脉宽调制输出节点</p>
+    <h3>输入</h3>
+    <dl class="message-properties">
+        <dt>payload <span class="property-type">数字类型 [0, 100]</span></dt>
+    </dl>
     <h3>输出</h3>
     <dl class="message-properties">
-        <dt>payload <span class="property-type">number</span></dt>
-        <dd>指定的鼠标按键被按下和释放时会输出1或者0。</dd>
-        <dt>button <span class="property-type">number</span></dt>
-        <dd>1, 2, 4分别对应l左键、右键和中间滚轮, 因此你可以知道具体的按键或是按键组合。</dd>
-        <dt>topic <span class="property-type">string</span></dt>
-        <dd>被设定为<code>pi/mouse</code></dd>
+        无
     </dl>
+    <h3>描述</h3>
+    <p>在脉宽调制输出模式下需要输入值 <code>msg.payload</code> 是0到100的整数，对应设置dutycycle的值。 
+    <p>PWM(Pulse-width modulation)是脉冲宽度调制的缩写，更多内容请参考<a href="https://zhuanlan.zhihu.com/p/510923105?utm_id=0">延伸阅读</a></p>
+    <p>该节点依赖RDK中名为Hobot.GPIO的python库。<a href="https://developer.horizon.cc/documents_rdk/python_development/40pin_user_guide/gpio">参考示例</a></p>
+    <h3>配置</h3>
+    <ul>
+        <li>针脚：以可视化的形式选择对应针脚</li>
+        <li>BCM GPIO：GPIO针脚对应BCM编码，与针脚保持一致</li>
+        <li>频率：与硬件设计相关，范围在48KHz～192MHz之间，默认48000Hz</li>
+        <li>名称：填写后可作为自定义节点名称使用</li>
+    </ul>
+</script>
+
+<script type="text/html" data-help-name="rdk-gpio in">
+    <p>RDK GPIO数字输入节点</p>
+    <h3>输入</h3>
+    <dl class="message-properties">
+        无
+    </dl>
+    <h3>输出</h3>
+    <dl class="message-properties">
+        <dt>payload <span class="property-type">数字类型</span></dt>
+        <dd>payload的值会是 1 或者 0。</dd>
+        <dt>topic <span class="property-type">字符串类型</span></dt>
+        <dd>topic会被设置成 <code>gpio/{bcm引脚号}</code>。</dd>
+    </dl>
+    <h3>描述</h3>
+    <p>数字输入节点用于读取特定针脚的电平状态。需要注意的是当前下上拉电阻的设置功能还未完善，请谨慎使用。</p>
+    <h3>配置</h3>
+    <ul>
+        <li>针脚：以可视化的形式选择对应针脚</li>
+        <li>BCM GPIO：GPIO针脚对应BCM编码，与针脚保持一致</li>
+        <li>上/下拉电阻：当前该功能尚未完善</li>
+        <li>去抖动：设定去抖动时间，默认25毫秒</li>
+        <li>启动时读取针脚状态：默认启动时不读取针脚状态</li>
+        <li>名称：填写后可作为自定义节点名称使用</li>
+    </ul>
+</script>
+
+
+<script type="text/html" data-help-name="rdk-mouse">
+    <p>RDK鼠标按键节点</p>
+    <h3>输入</h3>
+    <dl class="message-properties">
+        无
+    </dl>
+    <h3>输出</h3>
+    <dl class="message-properties">
+        <dt>payload <span class="property-type">数字类型</span></dt>
+        <dd>指定的鼠标按键被按下和释放时会输出1或者0。</dd>
+        <dt>button <span class="property-type">数字类型</span></dt>
+        <dd>1, 2, 4分别对应l左键、右键和中间滚轮, 因此你可以知道具体的按键或是按键组合。</dd>
+        <dt>topic <span class="property-type">字符串类型</span></dt>
+        <dd>被设定为<code>io/mouse</code></dd>
+    </dl>
+    <h3>配置</h3>
+    <ul>
+        <li>按钮：可以选择左键、右键、滚轮和所有按键。</li>
+        <li>名称：填写后可作为自定义节点名称使用</li>
+    </ul>
 </script>
 
 <script type="text/html" data-help-name="rdk-keyboard">
-    <p>RDK键盘按键节点。配合游戏/无线USB键盘使用。</p>
+    <p>RDK键盘按键节点</p>
+    <h3>输入</h3>
+    <dl class="message-properties">
+        无
+    </dl>
     <h3>输出</h3>
     <dl class="message-properties">
-        <dt>payload <span class="property-type">number</span></dt>
+        <dt>payload <span class="property-type">数字类型</span></dt>
         <dd>包含按键的值</dd>
-        <dt>action <span class="property-type">string</span></dt>
+        <dt>action <span class="property-type">字符串类型</span></dt>
         <dd>设置为"up", "down"或者"repeat"</dd>
-        <dt>topic <span class="property-type">string</span></dt>
-        <dd>设置为<code>pi/key</code></dd>
+        <dt>topic <span class="property-type">字符串类型</span></dt>
+        <dd>设置为<code>io/key</code></dd>
     </dl>
+    <h3>配置</h3>
+    <ul>
+        <li>名称：填写后可作为自定义节点名称使用</li>
+    </ul>
 </script>

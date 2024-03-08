@@ -619,7 +619,7 @@
                 </div>
                 <div class="pinTableRow">
                     <div class="pinTableCellL pinColorGPIO"><label for="pinTable-pin-15">GPIO22 - 15 <input disabled id="pinTable-pin-15" type="radio" name="pins" value="22"></label></div>
-                    <div class="pinTableCellR pinColorGPIO"><label for="pinTable-pin-16"><input id="pinTable-pin-16" type="radio" name="pins" value="23"> 16 - GPIO23</label></div>
+                    <div class="pinTableCellR pinColorGPIO"><label for="pinTable-pin-16"><input disabled id="pinTable-pin-16" type="radio" name="pins" value="23"> 16 - GPIO23</label></div>
                 </div>
                 <div class="pinTableRow">
                     <div class="pinTableCellL pinColorPower"><label>3.3V Power - 17 <input disabled type="radio" name="pins" value=""></label></div>
@@ -1029,6 +1029,10 @@
                 pinsInUse = data || {};
                 $('#pin-tip').html(pintip + Object.keys(data));
             });
+
+            if(this.pin){
+                $("#pinform input[value="+this.pin+"]").prop('checked', true);
+            }
 
             for (var i=0; i< validPinValues.length; i++) {
                 $("#pinform input[value="+validPinValues[i]+"]").on("change", function (evt) {
