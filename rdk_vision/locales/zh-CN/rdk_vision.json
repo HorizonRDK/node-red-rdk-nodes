@@ -1,5 +1,11 @@
 {
     "rdk-vision" : {
+        "names": {
+            "yolov3": "YOLOv3目标检测节点",
+            "yolov5": "YOLOv5目标检测节点",
+            "unet": "unet图像分割节点",
+            "fcos": "fcos目标检测节点"
+        },
         "label": {
             "name": "名称"
         },

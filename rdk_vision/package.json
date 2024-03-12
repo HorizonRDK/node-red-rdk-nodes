@@ -1,7 +1,7 @@
 {
   "name": "node-red-node-rdk-vision",
-  "version": "0.0.3",
-  "description": "Node Red node for using vision algorithms on a RDK hardware",
+  "version": "0.0.4",
+  "description": "配合RDK硬件使用视觉算法的Node-RED功能包(Node-RED nodes for using vision algorithms on a RDK hardware)",
   "license": "Apache-2.0",
   "main": "none",
   "keywords": [
@@ -18,7 +18,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/HorizonRDK/node-red-rdk-nodes"
+    "url": "https://github.com/HorizonRDK/node-red-rdk-nodes/tree/develop/rdk_vision"
   },
   "node-red": {
     "version": ">=3.1.3",

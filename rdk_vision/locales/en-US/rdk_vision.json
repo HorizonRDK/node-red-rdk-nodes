@@ -1,5 +1,11 @@
 {
     "rdk-vision" : {
+        "names": {
+            "yolov3": "YOLOv3 Node",
+            "yolov5": "YOLOv5 Node",
+            "unet": "unet Node",
+            "fcos": "fcos Node"
+        },
         "label": {
             "name": "Name"
         },
