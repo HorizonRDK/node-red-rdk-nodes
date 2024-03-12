@@ -1,0 +1,90 @@
+{
+  "name": "node-red-node-rdk-ros2",
+  "license": "MIT",
+  "description": "A collection of Node-RED nodes for connecting with ROS2.",
+  "version": "0.0.1",
+  "engines": {
+    "node": ">=18"
+  },
+  "os": [
+    "!win32"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/HorizonRDK/node-red-rdk-nodes/tree/develop/rdk_ros2"
+  },
+  "dependencies": {
+    "cron": "~1.8.2",
+    "is-web-api": "~1.0.1"
+  },
+  "devDependencies": {
+    "coveralls": "^3.1.0",
+    "eslint": "~7.5.0",
+    "eslint-config-tamia": "~7.2.5",
+    "eslint-plugin-prettier": "~3.1.2",
+    "husky": "~4.2.5",
+    "mocha": "8.0.1",
+    "mocha-lcov-reporter": "^1.3.0",
+    "nyc": "^15.1.0",
+    "prettier": "~2.0.5",
+    "remark-cli": "^6.0.1",
+    "remark-preset-lint-recommended": "^3.0.4",
+    "textlint": "~11.7.6",
+    "textlint-rule-common-misspellings": "~1.0.1",
+    "textlint-rule-terminology": "~2.1.4",
+    "textlint-rule-write-good": "~1.6.2"
+  },
+  "keywords": [
+    "ros2",
+    "node-red",
+    "contrib",
+    "fiware",
+    "ngsi",
+    "rdk"
+  ],
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.js": [
+      "prettier --config .prettierrc.json --write",
+      "git add"
+    ],
+    "*.md": [
+      "prettier --no-config --tab-width 4 --print-width 120 --write --prose-wrap always",
+      "git add"
+    ],
+    "*.yml": [
+      "prettier --no-config --write",
+      "git add"
+    ]
+  },
+  "textlint": {
+    "rules": {
+      "common-misspellings": true,
+      "terminology": {
+        "defaultTerms": true
+      }
+    }
+  },
+  "homepage": "https://developer.horizon.cc/",
+  "node-red": {
+    "nodes": {
+      "DDS Settings": "src/dds-settings/dds-settings.js",
+      "publisher": "src/publisher/publisher.js",
+      "subscriber": "src/subscriber/subscriber.js",
+      "IDL Type": "src/idl-types/idl-types.js",
+      "ROS 2 Type": "src/ros2-types/ros2-types.js",
+      "ROS2 Inject": "src/ros2-message-inject/ros2-message-inject.js",
+      "FIWARE Publisher": "src/fiware_publisher/fiware_publisher.js",
+      "FIWARE Subscriber": "src/fiware_subscriber/fiware_subscriber.js",
+      "FIWARE Settings": "src/fiware-settings/fiware-settings.js"
+    }
+  },
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  }
+}

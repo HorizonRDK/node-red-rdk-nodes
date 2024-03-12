@@ -1,0 +1,39 @@
+#red-ui-header {
+    background-color: #1a1737;
+}
+
+#red-ui-header .red-ui-deploy-button {
+    background: #da1f4d;
+    color: #eee;
+}
+
+#red-ui-header .button-group > a:hover {
+    background: #bf1a43;
+}
+
+#red-ui-header .button {
+    text-align: center;
+    color: #7dc2b8;
+}
+
+.red-ui-tray-toolbar button.primary {
+    border-color: #eee;
+    color: #eee !important;
+    background: #da1f4d;
+}
+
+#node-dialog-ok:hover {
+    background: #bf1a43;
+}
+
+.red-ui-debug-msg-type-string {
+    color: #da1f4d;
+}
+
+.red-ui-editor a:hover {
+    color: #58bfb0;
+}
+
+.red-ui-help dl.message-properties > dt {
+    color: #da1f4d;
+}

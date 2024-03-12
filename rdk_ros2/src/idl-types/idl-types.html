@@ -1,0 +1,269 @@
+<!--Properties that can be configured for this node-->
+<script type="text/html" data-template-name="IDL Type">
+    <div class="form-row">
+       <div style="display: none; width: calc(100% - 105px)"><input type="text" id="node-input-name"></div>
+    </div>
+
+    <div class="form-row" style="margin-bottom: 0px;">
+        <input type="hidden" id="node-input-idltype" autofocus="autofocus">
+    </div>
+
+    <div class="form-row node-text-editor-row" style="position:relative">
+        <div style="position: absolute; right:0; bottom: calc(100% + 3px);"><button id="node-function-expand-js" class="red-ui-button red-ui-button-small"><i class="fa fa-expand"></i></button></div>
+        <div style="height: 220px; min-height:120px; margin-top: 30px;" class="node-text-editor" id="node-input-idltype-editor" ></div>
+    </div>
+
+</script>
+
+<!--Node style definition-->
+<script type="text/javascript">
+
+    RED.nodes.registerType('IDL Type',
+    {
+        color:"#fdd0a2",
+        category: 'RDK ROS2',
+        defaults:
+        {
+            name: { value: "", required: true },
+            idltype: { value: "module dummy_pkg {\n module msg {\n  struct DummyType {\n    string dummy_msg;\n  };\n };\n};" }
+        },
+        inputs:1,
+        outputs:1,
+        icon: "ros2-icon.svg",
+        label: function()
+        {
+            return this.name || this._("IDL Type");
+        },
+        labelStyle: function()
+        {
+            return this.name ? "node_label_italic" : "";
+        },
+        oneditprepare: function()
+        {
+            var that = this;
+
+            var buildEditor = function(id, value, defaultValue)
+            {
+                var editor = RED.editor.createEditor({
+                    id: id,
+                    mode: 'ace/mode/text',
+                    value: value || defaultValue || "",
+                    globals:
+                    {
+                        msg:true,
+                        context:true,
+                        RED: true,
+                        util: true,
+                        flow: true,
+                        global: true,
+                        console: true,
+                        Buffer: true,
+                        setTimeout: true,
+                        clearTimeout: true,
+                        setInterval: true,
+                        clearInterval: true
+                    }
+                });
+                if (defaultValue && value === "")
+                {
+                    editor.moveCursorTo(defaultValue.split("\n").length - 1, 0);
+                }
+                return editor;
+            }
+            this.editor = buildEditor('node-input-idltype-editor',$("#node-input-idltype").val())
+            RED.library.create({
+                url:"idl-type", // where to get the data from
+                type:"type", // the type of object the library is for
+                editor:this.editor, // the field name the main text body goes to
+                mode:"ace/mode/idl",
+                fields:[
+                    {
+                        name: 'info',
+                        get: function()
+                        {
+                            return that.infoEditor.getValue();
+                        },
+                        set: function(v)
+                        {
+                            that.infoEditor.setValue(v||"", -1);
+                        }
+                    }
+                ],
+                ext:"idl"
+            });
+            this.editor.focus();
+
+            var expandButtonClickHandler = function(editor)
+            {
+                return function(e)
+                {
+                    e.preventDefault();
+                    var value = editor.getValue();
+                    RED.editor.editJavaScript({
+                        value: value,
+                        width: "Infinity",
+                        cursor: editor.getCursorPosition(),
+                        mode: "ace/mode/nrjavascript",
+                        complete: function(v,cursor)
+                        {
+                            editor.setValue(v, -1);
+                            editor.gotoLine(cursor.row+1,cursor.column,false);
+                            setTimeout(function()
+                            {
+                                editor.focus();
+                            },300);
+                        }
+                    })
+                }
+            }
+            $("#node-function-expand-js").on("click", expandButtonClickHandler(this.editor));
+
+            RED.popover.tooltip($("#node-function-expand-js"), RED._("node-red:common.label.expand"));
+
+        },
+        oneditsave: function()
+        {
+            var node = this;
+
+            $.getJSON('checkidl', { idl: node["editor"].getValue().toString()}, function(result)
+            {
+                if (result["error"])
+                {
+                    if (node)
+                    {
+                        var error = result["error"].replace("PEGLIB_PARSER", "IDL Type Parser").replaceAll("<", "'").replaceAll(">", "");
+                        RED.notify(node._(error,{message:node._("inject.errors.failed")}),"error");
+                        node.name = "";
+                        if (!node.validationErrors.includes("idl"))
+                        {
+                            node.validationErrors.push("idl");
+                            node.valid = false;
+                        }
+                    }
+                }
+                if (result["name"] && node)
+                {
+                    node.name = result["name"].replace(/::msg::/,"/");
+                    node.validationErrors = [];
+                    node.valid = true;
+                }
+
+                // Update the associated endpoint nodes
+                RED.nodes.eachLink( function(n)
+                {
+                    if (n.source.id == node.id)
+                    {
+                        switch(n.target.type)
+                        {
+                            case "Publisher":
+                            case "Subscriber":
+                            case "FIWARE Publisher":
+                            case "FIWARE Subscriber":
+                                n.target.selectedtype = node.name;
+                                break;
+                        }
+                    }
+                });
+
+            });
+
+            // Notify the inject nodes must be modified
+            RED.nodes.eachLink( function(n)
+            {
+                if (n.target.id == node.id) // Input connection
+                {
+                    switch(n.source.type)
+                    {
+                        case 'ROS2 Inject':
+                            RED.notify("The type has been changed, open inject node and fill the new fields", "warning");
+                            break;
+                    }
+                }
+            });
+
+            var disposeEditor = function(editorName,targetName,defaultValue)
+            {
+                var editor = node[editorName];
+                var annot = editor.getSession().getAnnotations();
+                for (var k=0; k < annot.length; k++)
+                {
+                    if (annot[k].type === "error")
+                    {
+                        break;
+                    }
+                }
+                var val = editor.getValue();
+                if (defaultValue)
+                {
+                    if (val.trim() == defaultValue.trim())
+                    {
+                        val = "";
+                    }
+                }
+                editor.destroy();
+                delete node[editorName];
+                $("#"+targetName).val(val);
+            }
+            disposeEditor("editor","node-input-idltype");
+        },
+        oneditcancel: function()
+        {
+            var node = this;
+
+            node.editor.destroy();
+            delete node.editor;
+        },
+        oneditresize: function(size)
+        {
+            var rows = $("#dialog-form>div:not(.node-text-editor-row)");
+            var height = $("#dialog-form").height();
+            for (var i=0; i<rows.length; i++)
+            {
+                height -= $(rows[i]).outerHeight(true);
+            }
+            var editorRow = $("#dialog-form>div.node-text-editor-row");
+            height -= (parseInt(editorRow.css("marginTop"))+parseInt(editorRow.css("marginBottom")));
+            $(".node-text-editor").css("height",height+"px");
+            this.editor.resize();
+
+            var height = size.height;
+            $("#node-input-idltype-editor").css("height", (height -145)+"px");
+
+            this.editor.resize();
+        }
+    });
+
+    // Event emitted when a link is created
+    RED.events.on("links:add", function(link) {
+        if (link.source.type == 'IDL Type')
+        {
+            switch(link.target.type)
+            {
+                case "Publisher":
+                case "Subscriber":
+                case "FIWARE Publisher":
+                case "FIWARE Subscriber":
+                    if (link.source.name !== "")
+                    {
+                        link.target.selectedtype = link.source.name;
+                    }
+                    break;
+            }
+        }
+    });
+
+</script>
+
+<!--Help text shown for the IDL Type node-->
+<script type="text/html" data-help-name="IDL Type">
+    <p> This node represents a type defined by means of an IDL. IDL is a language that allows unambiguous specification
+        of the interfaces that may be used to define data types.</p>
+    <h3>Settings</h3>
+        <dl class="message-properties">
+        <dt>IDL definition<span class="property-type">string</span></dt>
+        <dd>String representing a data type using the IDL language.</dd>
+        </dl>
+    <h3>Details</h3>
+        <p>This node doesn't have functionality itself. It must be connected to a inject node (ROS2 Inject) or a
+        function node (Publisher or Subscriber).</p>
+</script>
