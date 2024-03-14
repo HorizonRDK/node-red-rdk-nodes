@@ -1,0 +1,31 @@
+{
+    "rdk-smartupdate": {
+        "names": {
+            "smartupdate": "智能更新"
+        },
+        "label": {
+            "name": "名称"
+        },
+        "placeholder": {
+            "name": ""
+        },
+        "errors": {
+            "badEnv": "依赖缺失，请检查！",
+            "badInput": "输入有误，请检查！",
+            "badOutput": "输出有误，请检查！",
+            "updating": "更新时发生错误！",
+            "upgrading": "升级时发生错误！",
+            "autoremoving": "清理时发生错误！"
+        },
+        "status": {
+            "working": "运行中",
+            "updated": "已完成更新",
+            "updating": "更新中...",
+            "upgrading": "升级中...",
+            "autoremoving": "即将完成, 清理中..."
+        },
+        "hints": {
+            
+        }
+    }
+}

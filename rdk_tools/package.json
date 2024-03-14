@@ -1,0 +1,48 @@
+{
+    "name": "node-red-node-rdk-tools",
+    "version": "0.0.1",
+    "description": "配合RDK硬件及TROS使用的Node-RED功能包(Node-RED nodes for using TROS on a RDK hardware and TROS)",
+    "license": "Apache-2.0",
+    "main": "none",
+    "keywords": [
+      "node-red",
+      "rdk",
+      "x3",
+      "TROS",
+      "NodeHub"
+    ],
+    "scripts": {
+      "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "dependencies": {
+    },
+    "repository": {
+      "type": "git",
+      "url": "https://github.com/HorizonRDK/node-red-rdk-nodes/tree/develop/rdk_tools"
+    },
+    "node-red": {
+      "version": ">=3.1.3",
+      "nodes": {
+        "rdk-smartupdate": "src/rdk-smartupdate/rdk-smartupdate.js",
+        "rdk-checkexecute": "src/rdk-checkexecute/rdk-checkexecute.js",
+        "rdk-texttoaudio": "src/rdk-texttoaudio/rdk-texttoaudio.js"
+      }
+    },
+    "author": "WYP",
+    "bugs": {
+      "url": ""
+    },
+  
+    "homepage": "https://developer.horizon.cc/",
+    "directories": {
+      "lib": "lib"
+    },
+    "engines": {
+      "node": ">=18.0.0"
+    },
+    "publishConfig": {
+      "access": "public",
+      "registry": "https://registry.npmjs.org/"
+    }
+  }
+  

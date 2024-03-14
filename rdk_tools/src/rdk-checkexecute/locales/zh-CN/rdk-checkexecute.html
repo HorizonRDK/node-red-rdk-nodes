@@ -1,0 +1,23 @@
+<script type="text/html" data-help-name="rdk-tools checkexecute">
+    <p>RDK Tools检查并执行节点</p>
+    <h3>输入</h3>
+    <dl class="message-properties">
+        <dt>payload <span class="property-type">字符串类型(功能包名称，多个功能包用空格分开)</span></dt>
+    </dl>
+    <h3>输出1</h3>
+    <dl class="message-properties">
+        <dt>payload <span class="property-type">(有状态变化或正常结束后返回)</span></dt>
+    </dl>
+    <h3>输出2</h3>
+    <dl class="message-properties">
+        <dt>payload <span class="property-type">(错误信息提醒)</span></dt>
+    </dl>
+    <h3>描述</h3>
+    <p>该节点内部会检查TROS功能包是否可以执行，如未安装会先自动安装。</p>
+    <p>该节点的输入可以是代表功能包名称的字符串，多个功能包名称用空格隔开。</p>
+    <p>该节点的输出1会将正常的状态更新和正常结束进行输出。</p>
+    <p>该节点的输出2是异常更新的情况，会将错误信息传递出来。</p>
+    <ul>
+        <li>名称：填写后可作为自定义节点名称使用</li>
+    </ul>
+</script>

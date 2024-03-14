@@ -1,0 +1,23 @@
+<script type="text/html" data-help-name="rdk-tools smartupdate">
+    <p>RDK Tools智能更新节点</p>
+    <h3>输入</h3>
+    <dl class="message-properties">
+        <dt>payload <span class="property-type">任何类型</span></dt>
+    </dl>
+    <h3>输出1</h3>
+    <dl class="message-properties">
+        <dt>payload <span class="property-type">与输入类型相同的类型</span></dt>
+    </dl>
+    <h3>输出2</h3>
+    <dl class="message-properties">
+        <dt>payload <span class="property-type">对象类型(失败信息)</span></dt>
+    </dl>
+    <h3>描述</h3>
+    <p>该节点内部会执行<code>apt update</code>等一些列命令。</p>
+    <p>该节点的输入可以是任何类型的数据，主要是用于触发更新操作。</p>
+    <p>该节点的输出1是正常更新的情况，会将输入原封不动传递出去。</p>
+    <p>该节点的输出2是异常更新的情况，会将错误信息传递出来。</p>
+    <ul>
+        <li>名称：填写后可作为自定义节点名称使用</li>
+    </ul>
+</script>

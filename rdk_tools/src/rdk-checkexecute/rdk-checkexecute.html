@@ -1,0 +1,23 @@
+<script type="text/x-red" data-template-name="rdk-tools checkexecute">
+    <div class="form-row node-input-name">
+        <label for="node-input-name"><i class="fa fa-tag"></i> <span data-i18n="rdk-checkexecute.names.checkexecute"></span></label>
+        <input type="text" id="node-input-name" data-i18n="[placeholder]rdk-checkexecute.names.checkexecute" style="width: 296px;">
+    </div>
+</script>
+
+<script type="text/javascript">
+    RED.nodes.registerType("rdk-tools checkexecute",{
+        category: "RDK Tools",
+        color: "#E478FF",
+        defaults: {
+            name: {value:""}
+        },
+        inputs:1,
+        outputs:2,
+        icon: "execute.svg",
+        oneditprepare: function() {},
+        label: function() {
+            return this.name || this._("rdk-checkexecute.names.checkexecute");
+        }
+    });
+</script>

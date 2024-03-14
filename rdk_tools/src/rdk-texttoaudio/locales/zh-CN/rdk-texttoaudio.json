@@ -1,0 +1,26 @@
+{
+    "rdk-texttoaudio": {
+        "names": {
+            "texttoaudio": "文字转语音"
+        },
+        "label": {
+            "name": "名称",
+            "ttsVoice": "文字转语音"
+        },
+        "placeholder": {
+            "name": ""
+        },
+        "errors": {
+            "inputType": "输入类型错误",
+            "runError": "执行时出错"
+        },
+        "status": {
+            "playing": "播放中...",
+            "speaking": "语音输出中..."
+            
+        },
+        "hints": {
+            
+        }
+    }
+}

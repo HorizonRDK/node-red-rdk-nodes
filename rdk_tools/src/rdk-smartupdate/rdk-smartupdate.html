@@ -1,0 +1,23 @@
+<script type="text/x-red" data-template-name="rdk-tools smartupdate">
+    <div class="form-row node-input-name">
+        <label for="node-input-name"><i class="fa fa-tag"></i> <span data-i18n="rdk-smartupdate.names.smartupdate"></span></label>
+        <input type="text" id="node-input-name" data-i18n="[placeholder]rdk-smartupdate.names.smartupdate" style="width: 296px;">
+    </div>
+</script>
+
+<script type="text/javascript">
+    RED.nodes.registerType("rdk-tools smartupdate",{
+        category: "RDK Tools",
+        color: "#E478FF",
+        defaults: {
+            name: {value:""}
+        },
+        inputs:1,
+        outputs:2,
+        icon: "update.svg",
+        oneditprepare: function() {},
+        label: function() {
+            return this.name || this._("rdk-smartupdate.names.smartupdate");
+        }
+    });
+</script>

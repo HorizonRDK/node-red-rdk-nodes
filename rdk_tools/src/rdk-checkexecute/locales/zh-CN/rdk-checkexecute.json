@@ -1,0 +1,26 @@
+{
+    "rdk-checkexecute": {
+        "names": {
+            "checkexecute": "检查并执行"
+        },
+        "label": {
+            "name": "名称"
+        },
+        "placeholder": {
+            "name": ""
+        },
+        "errors": {
+            "inputType": "输入类型错误",
+            "runError": "执行时出错"
+        },
+        "status": {
+            "working": "运行中",
+            "checking": "检查功能包...",
+            "installing": "功能包安装中...",
+            "finished": "运行完毕"
+        },
+        "hints": {
+            
+        }
+    }
+}
