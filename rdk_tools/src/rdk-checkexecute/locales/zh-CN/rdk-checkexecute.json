@@ -10,19 +10,19 @@
             "name": ""
         },
         "errors": {
-            "inputType": "输入类型错误",
-            "launchType": "启动类型错误",
-            "runError": "执行时出错"
+            "inputtype": "输入类型错误",
+            "launchtype": "启动类型错误",
+            "runerror": "执行时出错"
         },
         "status": {
             "working": "运行中",
             "checking": "检查功能包...",
             "installing": "功能包安装中...",
-            "launchType": "功能运行中...",
+            "running": "功能运行中...",
             "finished": "运行完毕"
         },
         "hints": {
-            
+            "success": ""
         }
     }
 }

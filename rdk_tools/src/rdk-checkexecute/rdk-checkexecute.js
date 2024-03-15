@@ -16,6 +16,20 @@ module.exports = function(RED) {
         });
     }
 
+    function getChildPids(pid, pids){
+        try{
+            var childPidBuffer = execSync('pgrep -P ' + pid);
+            var childPid = childPidBuffer.toString().replace(/\r?\n/g, ' ');
+            console.log('childPid: ', childPid);
+            pids.push(childPid);
+            getChildPids(childPid, pids);
+        }
+        catch(e){
+            return;
+        }
+        return;
+    }
+
     function RDKToolsCheckUpdateNode(config){
         RED.nodes.createNode(this, config);
     
@@ -23,18 +37,23 @@ module.exports = function(RED) {
         var node = this;
 
         node.on('input', async function(msg){
-            if(Object.hasOwnProperty(msg, 'kill')){
+            if(Object.hasOwnProperty.call(msg, 'kill')){
+                // console.log('before kill')
                 if(node.running === true && node.child){
-                    node.child.kill('SIGKILL');
+                    var pids = [node.child.pid.toString()];
+                    getChildPids(node.child.pid, pids);
+                    console.log('pids: ', pids.join(' '))
+                    execSync('sudo kill -9 ' + pids.join(' '));
                     node.child = null;
                     node.running = false;
-                    node.status({fill:"yellow",shape:"dot",text:"rdk-checkexecute.status.finished"});
+                    node.status({fill:"gray",shape:"dot",text:"rdk-checkexecute.status.finished"});
                 }
+                return;
             }
             var packageName = msg.payload;
             var launchName = msg.launch;
             if(!(packageName instanceof String)){
-                node.status({fill:"red",shape:"dot",text:"rdk-checkexecute.errors.inputType"});
+                node.status({fill:"red",shape:"dot",text:"rdk-checkexecute.errors.inputtype"});
             }
 
             var nameList = packageName.trim().split(' ');
@@ -50,7 +69,7 @@ module.exports = function(RED) {
                     matched = false;
                 }
             })
-            console.log('matched: ', matched)
+            // console.log('matched: ', matched)
             if(!matched){
                 node.status({fill:"blue",shape:"ring",text:"rdk-checkexecute.status.installing"});
                 await sleep(50);
@@ -58,26 +77,47 @@ module.exports = function(RED) {
             }
 
             if(typeof launchName != 'string'){
-                node.status({fill:"red",shape:"dot",text:"rdk-checkexecute.errors.launchType"});
-                msg.payload = RED._('rdk-checkexecute.errors.launchType');
+                node.status({fill:"red",shape:"dot",text:"rdk-checkexecute.errors.launchtype"});
+                msg.payload = RED._('rdk-checkexecute.errors.launchtype');
                 node.send([null, msg])
                 return;
             }
-            var childProcess = exec(runCommand + launchName);
+            // console.log(runCommand + launchName)
+            var childProcess = exec(runCommand + launchName, {
+                shell: '/bin/bash'
+            }, function(e, out, err){
+                if(err){
+                    msg.payload = err;
+                    node.send([null, msg]);
+                }
+                if(out){
+                    msg.payload = RED._('rdk-checkexecute.status.finished');
+                    node.send([msg, null])
+                }
+            });
             node.status({fill:"green",shape:"dot",text:"rdk-checkexecute.status.running"});
             node.running = true;
             node.child = childProcess;
             childProcess.on('close', function(ret){
+                // console.log('close: ', ret)
                 if(ret === 0){
-                    node.status({fill:"yellow",shape:"dot",text:"rdk-checkexecute.status.finished"});
-                    node.send([msg, null])
+                    node.status({fill:"gray",shape:"dot",text:"rdk-checkexecute.status.finished"});
                 }
                 else{
-                    node.status({fill:"red",shape:"dot",text:"rdk-checkexecute.errors.runError"});
-                    msg.payload = RED._('rdk-checkexecute.errors.runError');
-                    node.send([null, msg])
+                    if(node.running !== true) return;
+                    node.status({fill:"red",shape:"dot",text:"rdk-checkexecute.errors.runerror"});
                 }
             })
+        })
+
+        node.on('close', function(){
+            if(node.running === true && node.child){
+                var pids = [node.child.pid.toString()];
+                getChildPids(node.child.pid, pids);
+                execSync('sudo kill -9 ' + pids.join(' '));
+                node.running = false;
+                node.child = null
+            }
         })
     }
 
