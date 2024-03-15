@@ -23,7 +23,16 @@ module.exports = function(RED) {
         var node = this;
 
         node.on('input', async function(msg){
+            if(Object.hasOwnProperty(msg, 'kill')){
+                if(node.running === true && node.child){
+                    node.child.kill('SIGKILL');
+                    node.child = null;
+                    node.running = false;
+                    node.status({fill:"yellow",shape:"dot",text:"rdk-checkexecute.status.finished"});
+                }
+            }
             var packageName = msg.payload;
+            var launchName = msg.launch;
             if(!(packageName instanceof String)){
                 node.status({fill:"red",shape:"dot",text:"rdk-checkexecute.errors.inputType"});
             }
@@ -48,8 +57,16 @@ module.exports = function(RED) {
                 execSync(installCommand + packageName);
             }
 
-            var childProcess = exec(runCommand + packageName);
-            node.status({fill:"green",shape:"dot",text:"rdk-checkexecute.status.installing"});
+            if(typeof launchName != 'string'){
+                node.status({fill:"red",shape:"dot",text:"rdk-checkexecute.errors.launchType"});
+                msg.payload = RED._('rdk-checkexecute.errors.launchType');
+                node.send([null, msg])
+                return;
+            }
+            var childProcess = exec(runCommand + launchName);
+            node.status({fill:"green",shape:"dot",text:"rdk-checkexecute.status.running"});
+            node.running = true;
+            node.child = childProcess;
             childProcess.on('close', function(ret){
                 if(ret === 0){
                     node.status({fill:"yellow",shape:"dot",text:"rdk-checkexecute.status.finished"});

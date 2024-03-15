@@ -1,6 +1,6 @@
 {
     "name": "node-red-node-rdk-tools",
-    "version": "0.0.2",
+    "version": "0.0.3",
     "description": "配合RDK硬件及TROS使用的Node-RED功能包(Node-RED nodes for using TROS on a RDK hardware and TROS)",
     "license": "Apache-2.0",
     "main": "none",
