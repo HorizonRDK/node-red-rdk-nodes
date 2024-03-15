@@ -10,10 +10,11 @@ module.exports = function(RED) {
 
         this.on('input', function(msg) {
             if (typeof msg.payload === "string") {
-                RED.comms.publish("playtts", node.voice+"#"+msg.payload);
+                RED.comms.publish("text2audio", node.voice+"#"+msg.payload);
                 node.status({fill:"blue",shape:"dot",text:"rdk-texttoaudio.status.speaking"});
             }
         });
+
     }
 
     RED.nodes.registerType("rdk-tools texttoaudio", RDKPlayAudioNode);

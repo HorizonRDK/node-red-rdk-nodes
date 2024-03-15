@@ -9,18 +9,17 @@
 (function() {
     var voices;
 
-    RED.comms.subscribe("playtts", function(t, o){
+    RED.comms.subscribe("text2audio", function(t, o){
         var v = o.split('#',2);
 
         if ('speechSynthesis' in window) {
             voices = window.speechSynthesis.getVoices();
-            var words = new SpeechSynthesisUtterance();
+            var words = new SpeechSynthesisUtterance(v[1]);
+            words.rate = 0.8;
             words.lang = 'zh-CN';
-            words.voice = voices[parseInt(v[0])];
-            words.speed = 0.5;
             window.speechSynthesis.speak(words);
             words.onend = function(event) {
-                $.getJSON('playaudio',function() { });
+                // window.speechSynthesis.cancel();
             }
         }
         else {
@@ -30,7 +29,7 @@
         
     RED.nodes.registerType("rdk-tools texttoaudio",{
         category: "RDK Tools",
-        color: "#E478FF",
+        color: "#FF804A",
         defaults: {
             name: {value:""}
         },
