@@ -1,0 +1,336 @@
+[
+    {
+        "id": "e0b7e1aae94301e8",
+        "type": "tab",
+        "label": "TROS MIPI Camera",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "b9953eaad2ea48f8",
+        "type": "change",
+        "z": "e0b7e1aae94301e8",
+        "name": "设置MIPI节点信息",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "tros-mipi-cam",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "launch",
+                "pt": "msg",
+                "to": "mipi_cam mipi_cam.launch.py",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 410,
+        "y": 160,
+        "wires": [
+            [
+                "8e8c41f2135db17b"
+            ]
+        ]
+    },
+    {
+        "id": "4e9156c8c193f559",
+        "type": "change",
+        "z": "e0b7e1aae94301e8",
+        "name": "设置编码节点",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "tros-mipi-cam",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "launch",
+                "pt": "msg",
+                "to": "hobot_codec hobot_codec_encode.launch.py",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 400,
+        "y": 240,
+        "wires": [
+            [
+                "7d37501fa7e5f351"
+            ]
+        ]
+    },
+    {
+        "id": "6333a774b3991d19",
+        "type": "change",
+        "z": "e0b7e1aae94301e8",
+        "name": "设置网络节点",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "tros-mipi-cam",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "launch",
+                "pt": "msg",
+                "to": "websocket websocket.launch.py websocket_image_topic:=/image_jpeg websocket_only_show_image:=true",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 400,
+        "y": 320,
+        "wires": [
+            [
+                "20cfba3504593e24"
+            ]
+        ]
+    },
+    {
+        "id": "0fe53d8f08704501",
+        "type": "change",
+        "z": "e0b7e1aae94301e8",
+        "name": "设置视频链接",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "http://{host}:8000",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 400,
+        "y": 400,
+        "wires": [
+            [
+                "0d8e5e3bd19faa71"
+            ]
+        ]
+    },
+    {
+        "id": "8e8c41f2135db17b",
+        "type": "rdk-tools checkexecute",
+        "z": "e0b7e1aae94301e8",
+        "name": "",
+        "x": 630,
+        "y": 140,
+        "wires": [
+            [],
+            []
+        ]
+    },
+    {
+        "id": "7d37501fa7e5f351",
+        "type": "rdk-tools checkexecute",
+        "z": "e0b7e1aae94301e8",
+        "name": "",
+        "x": 650,
+        "y": 240,
+        "wires": [
+            [],
+            []
+        ]
+    },
+    {
+        "id": "20cfba3504593e24",
+        "type": "rdk-tools checkexecute",
+        "z": "e0b7e1aae94301e8",
+        "name": "",
+        "x": 650,
+        "y": 320,
+        "wires": [
+            [],
+            []
+        ]
+    },
+    {
+        "id": "b17d3e0e4e799025",
+        "type": "rdk-tools smartupdate",
+        "z": "e0b7e1aae94301e8",
+        "name": "",
+        "x": 120,
+        "y": 140,
+        "wires": [
+            [
+                "b9953eaad2ea48f8",
+                "ecee8f38bffe1afe",
+                "3b03c802951ee19b",
+                "756c9f2dc32065b1"
+            ],
+            []
+        ]
+    },
+    {
+        "id": "41496395d17f82a6",
+        "type": "inject",
+        "z": "e0b7e1aae94301e8",
+        "name": "全部启动",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 80,
+        "y": 40,
+        "wires": [
+            [
+                "b17d3e0e4e799025"
+            ]
+        ]
+    },
+    {
+        "id": "ecee8f38bffe1afe",
+        "type": "delay",
+        "z": "e0b7e1aae94301e8",
+        "name": "",
+        "pauseType": "delay",
+        "timeout": "5",
+        "timeoutUnits": "seconds",
+        "rate": "1",
+        "nbRateUnits": "1",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": false,
+        "allowrate": false,
+        "outputs": 1,
+        "x": 260,
+        "y": 220,
+        "wires": [
+            [
+                "4e9156c8c193f559"
+            ]
+        ]
+    },
+    {
+        "id": "3b03c802951ee19b",
+        "type": "delay",
+        "z": "e0b7e1aae94301e8",
+        "name": "",
+        "pauseType": "delay",
+        "timeout": "10",
+        "timeoutUnits": "seconds",
+        "rate": "1",
+        "nbRateUnits": "1",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": false,
+        "allowrate": false,
+        "outputs": 1,
+        "x": 280,
+        "y": 280,
+        "wires": [
+            [
+                "6333a774b3991d19"
+            ]
+        ]
+    },
+    {
+        "id": "756c9f2dc32065b1",
+        "type": "delay",
+        "z": "e0b7e1aae94301e8",
+        "name": "",
+        "pauseType": "delay",
+        "timeout": "20",
+        "timeoutUnits": "seconds",
+        "rate": "1",
+        "nbRateUnits": "1",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": false,
+        "allowrate": false,
+        "outputs": 1,
+        "x": 280,
+        "y": 360,
+        "wires": [
+            [
+                "0fe53d8f08704501"
+            ]
+        ]
+    },
+    {
+        "id": "0d8e5e3bd19faa71",
+        "type": "rdk-tools openurl",
+        "z": "e0b7e1aae94301e8",
+        "name": "",
+        "x": 620,
+        "y": 400,
+        "wires": []
+    },
+    {
+        "id": "480ad30483770aeb",
+        "type": "inject",
+        "z": "e0b7e1aae94301e8",
+        "name": "全部停止",
+        "props": [
+            {
+                "p": "kill",
+                "v": "",
+                "vt": "date"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "x": 120,
+        "y": 440,
+        "wires": [
+            [
+                "8e8c41f2135db17b",
+                "7d37501fa7e5f351",
+                "20cfba3504593e24"
+            ]
+        ]
+    }
+]
