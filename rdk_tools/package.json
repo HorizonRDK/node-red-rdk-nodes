@@ -1,6 +1,6 @@
 {
     "name": "node-red-node-rdk-tools",
-    "version": "0.0.4",
+    "version": "0.0.5",
     "description": "配合RDK硬件及TROS使用的Node-RED功能包(Node-RED nodes for using TROS on a RDK hardware and TROS)",
     "license": "Apache-2.0",
     "main": "none",
@@ -9,7 +9,9 @@
       "rdk",
       "x3",
       "TROS",
-      "NodeHub"
+      "NodeHub",
+      "Chinese TTS",
+      "Open Website"
     ],
     "scripts": {
       "test": "echo \"Error: no test specified\" && exit 1"
@@ -25,7 +27,8 @@
       "nodes": {
         "rdk-smartupdate": "src/rdk-smartupdate/rdk-smartupdate.js",
         "rdk-checkexecute": "src/rdk-checkexecute/rdk-checkexecute.js",
-        "rdk-texttoaudio": "src/rdk-texttoaudio/rdk-texttoaudio.js"
+        "rdk-texttoaudio": "src/rdk-texttoaudio/rdk-texttoaudio.js",
+        "rdk-openurl": "src/rdk-openurl/rdk-openurl.js"
       }
     },
     "author": "WYP",

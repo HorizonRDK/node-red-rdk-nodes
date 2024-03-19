@@ -1,0 +1,20 @@
+{
+    "rdk-openurl": {
+        "names": {
+            "openurl": "Open Website"
+        },
+        "label": {
+            "name": "Name"
+        },
+        "placeholder": {
+        },
+        "errors": {
+            "invalidUrl": "Invalid web url, please check!"
+        },
+        "status": {
+        },
+        "hints": {
+            "validUrl": "Valid URL!"
+        }
+    }
+}

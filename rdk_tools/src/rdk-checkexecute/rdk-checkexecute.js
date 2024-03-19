@@ -43,7 +43,7 @@ module.exports = function(RED) {
                     var pids = [node.child.pid.toString()];
                     getChildPids(node.child.pid, pids);
                     console.log('pids: ', pids.join(' '))
-                    execSync('sudo kill -9 ' + pids.join(' '));
+                    execSync('kill -2 ' + pids.join(' '));
                     node.child = null;
                     node.running = false;
                     node.status({fill:"gray",shape:"dot",text:"rdk-checkexecute.status.finished"});
@@ -108,13 +108,17 @@ module.exports = function(RED) {
                     node.status({fill:"red",shape:"dot",text:"rdk-checkexecute.errors.runerror"});
                 }
             })
+            await sleep(20000);
+            var pids = [node.child.pid.toString()];
+            getChildPids(node.child.pid, pids);
+            node.status({fill:"green",shape:"dot",text:"pid: " + pids.join(' ')});
         })
 
         node.on('close', function(){
             if(node.running === true && node.child){
                 var pids = [node.child.pid.toString()];
                 getChildPids(node.child.pid, pids);
-                execSync('sudo kill -9 ' + pids.join(' '));
+                execSync('kill -2 ' + pids.join(' '));
                 node.running = false;
                 node.child = null
             }

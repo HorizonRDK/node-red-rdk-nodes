@@ -1,0 +1,37 @@
+<script type="text/x-red" data-template-name="rdk-tools openurl">
+    <div class="form-row node-input-name">
+        <label for="node-input-name"><i class="fa fa-tag"></i> <span data-i18n="rdk-openurl.label.name"></span></label>
+        <input type="text" id="node-input-name" data-i18n="[placeholder]rdk-openurl.names.openurl" style="width: 296px;">
+    </div>
+</script>
+
+<script type="text/javascript">
+(function() {
+    RED.comms.subscribe("openurl", function(topic, link){
+        if(link.indexOf('{host}') >= 0){
+            link = link.replace('{host}', window.location.hostname);
+        }
+
+        window.open(link, '_blank')
+    });
+        
+    RED.nodes.registerType("rdk-tools openurl",{
+        category: "RDK Tools",
+        color: "#FF804A",
+        defaults: {
+            name: {value:""}
+        },
+        inputs:1,
+        outputs:0,
+        align: 'right',
+        icon: "browser.svg",
+        paletteLabel: function() {
+            return this._("rdk-openurl.names.openurl");
+        },
+        oneditprepare: function() {},
+        label: function() {
+            return this.name || this._("rdk-openurl.names.openurl");
+        }
+    });
+})()
+</script>

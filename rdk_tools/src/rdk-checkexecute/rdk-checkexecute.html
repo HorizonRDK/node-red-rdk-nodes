@@ -1,7 +1,7 @@
 <script type="text/x-red" data-template-name="rdk-tools checkexecute">
     <div class="form-row node-input-name">
-        <label for="node-input-name"><i class="fa fa-tag"></i> <span data-i18n="rdk-checkexecute.names.checkexecute"></span></label>
-        <input type="text" id="node-input-name" data-i18n="[placeholder]rdk-checkexecute.label.name" style="width: 296px;">
+        <label for="node-input-name"><i class="fa fa-tag"></i> <span data-i18n="rdk-checkexecute.label.name"></span></label>
+        <input type="text" id="node-input-name" data-i18n="[placeholder]rdk-checkexecute.names.checkexecute" style="width: 296px;">
     </div>
 </script>
 
@@ -15,6 +15,9 @@
         inputs:1,
         outputs:2,
         icon: "execute.svg",
+        paletteLabel: function() {
+            return this._("rdk-checkexecute.names.checkexecute");
+        },
         oneditprepare: function() {},
         label: function() {
             return this.name || this._("rdk-checkexecute.names.checkexecute");

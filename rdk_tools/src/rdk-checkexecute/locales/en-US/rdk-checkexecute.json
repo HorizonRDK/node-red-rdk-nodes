@@ -1,0 +1,28 @@
+{
+    "rdk-checkexecute": {
+        "names": {
+            "checkexecute": "Check and Execute"
+        },
+        "label": {
+            "name": "Name"
+        },
+        "placeholder": {
+            "name": ""
+        },
+        "errors": {
+            "inputtype": "Invalid Input Type!",
+            "launchtype": "Invalid Launch Type!",
+            "runerror": "An error occured while running."
+        },
+        "status": {
+            "working": "working...",
+            "checking": "checking...",
+            "installing": "installing...",
+            "running": "running...",
+            "finished": "finished"
+        },
+        "hints": {
+            "success": ""
+        }
+    }
+}

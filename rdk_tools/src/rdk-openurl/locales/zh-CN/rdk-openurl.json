@@ -1,0 +1,20 @@
+{
+    "rdk-openurl": {
+        "names": {
+            "openurl": "打开网页"
+        },
+        "label": {
+            "name": "名称"
+        },
+        "placeholder": {
+        },
+        "errors": {
+            "invalidUrl": "网址不完整，请检查！"
+        },
+        "status": {
+        },
+        "hints": {
+            "validUrl": "网址检查通过！"
+        }
+    }
+}

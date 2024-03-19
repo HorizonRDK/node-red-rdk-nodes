@@ -1,6 +1,6 @@
 <script type="text/x-red" data-template-name="rdk-tools texttoaudio">
     <div class="form-row node-input-name">
-        <label for="node-input-name"><i class="fa fa-tag"></i> <span data-i18n="rdk-texttoaudio.names.texttoaudio"></span></label>
+        <label for="node-input-name"><i class="fa fa-tag"></i> <span data-i18n="rdk-texttoaudio.label.name"></span></label>
         <input type="text" id="node-input-name" data-i18n="[placeholder]rdk-texttoaudio.names.texttoaudio" style="width: 296px;">
     </div>
 </script>
@@ -37,6 +37,9 @@
         outputs:0,
         align: 'right',
         icon: "audio.svg",
+        paletteLabel: function() {
+            return this._("rdk-texttoaudio.names.texttoaudio");
+        },
         oneditprepare: function() {},
         label: function() {
             return this.name || this._("rdk-texttoaudio.names.texttoaudio");

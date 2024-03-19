@@ -1,0 +1,22 @@
+<script type="text/html" data-help-name="rdk-tools openurl">
+    <p>RDK Tools打开网页节点</p>
+    <h3>输入</h3>
+    <dl class="message-properties">
+        <dt>payload <span class="property-type">字符串类型(网址)</span></dt>
+    </dl>
+
+    <h3>输出</h3>
+    <dl class="message-properties">
+        无
+    </dl>
+   
+    <h3>描述</h3>
+    <p>该节点会在浏览器新标签页打开传入的网址。</p>
+    <p><b>特别注意:</b>网址中一定要带有<code>http://或https://</code>等前缀。</p>
+    <p>对于ip经常变化的情况，可以在网址中使用<code>{host}</code>来代替本机ip地址。例如<code>http://{host}:8000</code></p>
+    
+    <h3>配置</h3>
+    <ul>
+        <li>名称：填写后可作为自定义节点名称使用</li>
+    </ul>
+</script>

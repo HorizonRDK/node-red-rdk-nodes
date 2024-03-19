@@ -1,0 +1,30 @@
+{
+    "rdk-smartupdate": {
+        "names": {
+            "smartupdate": "Smart Update"
+        },
+        "label": {
+            "name": "Name"
+        },
+        "placeholder": {
+            "name": ""
+        },
+        "errors": {
+            "badEnv": "Lack of dependecies, please check!",
+            "badInput": "Invalid input, please check!",
+            "badOutput": "Invalid output, please check!",
+            "updating": "An error occured while updating!",
+            "upgrading": "An error occured while upgrading!",
+            "autoremoving": "An error occured while autoremoving!"
+        },
+        "status": {
+            "working": "working...",
+            "updated": "Updated",
+            "updating": "updating...",
+            "upgrading": "upgrading...",
+            "autoremoving": "almost done, cleaning..."
+        },
+        "hints": {
+        }
+    }
+}
