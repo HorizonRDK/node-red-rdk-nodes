@@ -1,3 +1,27 @@
+# node-red-node-rdk-ros2
+
+## Install
+There are two ways to install this module. The first one is using palette to manage module. The second one is installing manually using npm.
+```
+    cd ~/.node-red
+    npm i node-red-node-rdk-ros2
+```
+
+## Usage
+
+### Basic Usage
+**Step 1 Run a ros2 publisher**
+open a terminal
+```
+    source /opt/tros/setup.bash
+    ros2 run demo_nodes_cpp talker
+```
+
+**Step 2 Use Node-RED rdk-ros2 as subscriber**
+![ros2 basic](./images/rdkros2_basic.gif)
+
+
+
 # Node-RED ROS 2 Plugin
 
 [![License: MIT](https://img.shields.io/github/license/ramp-eu/TTE.project1.svg)](https://opensource.org/licenses/MIT)

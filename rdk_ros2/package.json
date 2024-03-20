@@ -2,7 +2,7 @@
   "name": "node-red-node-rdk-ros2",
   "license": "MIT",
   "description": "A collection of Node-RED nodes for connecting with ROS2.",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "engines": {
     "node": ">=18"
   },
@@ -42,11 +42,6 @@
     "ngsi",
     "rdk"
   ],
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
-  },
   "lint-staged": {
     "*.js": [
       "prettier --config .prettierrc.json --write",
