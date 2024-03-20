@@ -20,7 +20,7 @@ module.exports = function(RED) {
         try{
             var childPidBuffer = execSync('pgrep -P ' + pid);
             var childPid = childPidBuffer.toString().replace(/\r?\n/g, ' ');
-            console.log('childPid: ', childPid);
+            // console.log('childPid: ', childPid);
             pids.push(childPid);
             getChildPids(childPid, pids);
         }
@@ -42,7 +42,7 @@ module.exports = function(RED) {
                 if(node.running === true && node.child){
                     var pids = [node.child.pid.toString()];
                     getChildPids(node.child.pid, pids);
-                    console.log('pids: ', pids.join(' '))
+                    // console.log('pids: ', pids.join(' '))
                     execSync('kill -2 ' + pids.join(' '));
                     node.child = null;
                     node.running = false;
@@ -52,10 +52,14 @@ module.exports = function(RED) {
             }
             var packageName = msg.payload;
             var launchName = msg.launch;
-            if(!(packageName instanceof String)){
+            if(typeof packageName != 'string'){
                 node.status({fill:"red",shape:"dot",text:"rdk-checkexecute.errors.inputtype"});
             }
 
+            if(node.running === true && node.child){
+                RED.comms.publish("notify", RED._("rdk-checkexecute.errors.alreadyrun"));
+                return;
+            }
             var nameList = packageName.trim().split(' ');
             node.status({fill:"yellow",shape:"ring",text:"rdk-checkexecute.status.checking"});
             await sleep(50);
@@ -107,11 +111,16 @@ module.exports = function(RED) {
                     if(node.running !== true) return;
                     node.status({fill:"red",shape:"dot",text:"rdk-checkexecute.errors.runerror"});
                 }
+                node.running = false;
+                node.child = null;
             })
             await sleep(20000);
-            var pids = [node.child.pid.toString()];
-            getChildPids(node.child.pid, pids);
-            node.status({fill:"green",shape:"dot",text:"pid: " + pids.join(' ')});
+            if(node.running === true && node.child){
+                var pids = [node.child.pid.toString()];
+                getChildPids(node.child.pid, pids);
+                node.status({fill:"green",shape:"dot",text:"pid: " + pids.join(' ')});
+            }
+            
         })
 
         node.on('close', function(){

@@ -23,4 +23,13 @@
             return this.name || this._("rdk-checkexecute.names.checkexecute");
         }
     });
+
+    (function(){
+        RED.comms.subscribe("notify", function(topic, str){
+            RED.notify(str, {
+                type: "warning",
+                timeout: 5000
+            })
+        })
+    })();
 </script>

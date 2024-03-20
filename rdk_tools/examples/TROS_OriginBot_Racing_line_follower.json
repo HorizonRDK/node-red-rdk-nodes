@@ -1,0 +1,51 @@
+[
+    {
+        "id": "9f94e0ebff739e23",
+        "type": "change",
+        "z": "670db0923361fca8",
+        "g": "1e512f98e6722461",
+        "name": "设定控制参数",
+        "rules": [
+            {
+                "t": "set",
+                "p": "follow_angular_ratio",
+                "pt": "msg",
+                "to": "-1.0",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "follow_linear_speed",
+                "pt": "msg",
+                "to": "0.2",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "avoid_angular_ratio",
+                "pt": "msg",
+                "to": "0.2",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "avoid_linear_speed",
+                "pt": "msg",
+                "to": "0.1",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 460,
+        "y": 420,
+        "wires": [
+            [
+                "6b3aab7de2e8d72d"
+            ]
+        ]
+    }
+]

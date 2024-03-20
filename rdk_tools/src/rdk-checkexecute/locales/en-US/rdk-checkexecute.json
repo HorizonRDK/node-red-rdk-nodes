@@ -12,7 +12,8 @@
         "errors": {
             "inputtype": "Invalid Input Type!",
             "launchtype": "Invalid Launch Type!",
-            "runerror": "An error occured while running."
+            "runerror": "An error occured while running.",
+            "alreadyrun": "Already run!"
         },
         "status": {
             "working": "working...",

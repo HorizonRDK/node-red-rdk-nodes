@@ -12,7 +12,8 @@
         "errors": {
             "inputtype": "输入类型错误",
             "launchtype": "启动类型错误",
-            "runerror": "执行时出错"
+            "runerror": "执行时出错",
+            "alreadyrun": "正在运行！请勿重复启动！"
         },
         "status": {
             "working": "运行中",
