@@ -1,25 +1,27 @@
+English| [简体中文](./README_cn.md)
+
 # node-red-node-rdk-tools
-在Node-RED中配合地平线RDK硬件使用的工具节点。
+Tools nodes for use with Horizon RDK hardware in Node-RED.
 
-## 安装
-可以在Node-RED编辑器中的节点管理面板中进行安装。也可以进入node-red安装目录进行手动安装：
+## Installation
+You can install it in the node management panel in the Node-RED editor. Alternatively, you can manually install it by going to the node-red installation directory:
 ```
-    cd ~/.node-red
-    npm i node-red-node-rdk-tools
+cd ~/.node-red
+npm i node-red-node-rdk-tools
 ```
-## 使用
+## Usage
     
-### rdk-tools smartupdate(智能更新节点)
-![智能更新](./images/rdktools_smartupdate.gif)
+### rdk-tools smartupdate (Smart Update Node)
+![Smart Update](./images/rdktools_smartupdate.gif)
 
-### rdk-tools checkexecute(检测及执行节点)
-![检测及运行](./images/rdktools_checkexecute.gif)
+### rdk-tools checkexecute (Check and Execute Node)
+![Check and Execute](./images/rdktools_checkexecute.gif)
 
-### rdk-tools texttoaudio（文字转语音节点）
-![文字转语音](./images/rdktools_tts.gif)
+### rdk-tools texttoaudio (Text to Speech Node)
+![Text to Speech](./images/rdktools_tts.gif)
 
-### rdk-tools openurl（打开网页节点）
-![打开网页](./images/rdktools_openurl.gif)
+### rdk-tools openurl (Open URL Node)
+![Open URL](./images/rdktools_openurl.gif)
 
-## 注意
-+ rdk-vision中的节点需要与地平线RDK相关硬件及系统配合使用。[链接](https://developer.horizon.cc/)
+## Note
++ Nodes in rdk-vision need to be used in conjunction with Horizon RDK related hardware and system. [Link](https://developer.horizon.cc/)

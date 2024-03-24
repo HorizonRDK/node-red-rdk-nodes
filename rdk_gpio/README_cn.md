@@ -1,16 +1,16 @@
-English| [简体中文](./README_cn.md)
+[English](./README.md) | 简体中文
 
 # node-red-node-rdk-gpio
-Nodes related to GPIO functions for use with Horizon RDK hardware in Node-RED.
+在Node-RED中配合地平线RDK硬件使用的GPIO相关功能的节点。
 
-## Installation
-You can install it in the node management panel in the Node-RED editor. Alternatively, you can manually install it by entering the node-red installation directory:
+## 安装
+可以在Node-RED编辑器中的节点管理面板中进行安装。也可以进入node-red安装目录进行手动安装：
 ```
     cd ~/.node-red
     npm i node-red-node-rdk-gpio
 ```
 
-## Usage
+## 使用
 ![rdk-gpio nodes](./images/rdkgpio_nodes.jpeg)
 
 ### rdk-gpio out
@@ -28,4 +28,4 @@ You can install it in the node management panel in the Node-RED editor. Alternat
 ### rdk-keyboard
 ![rdk-keyboard](./images/rdkgpio_keyboard.gif)
 
-## Note
+## 注意

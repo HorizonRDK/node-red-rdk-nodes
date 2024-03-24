@@ -1,22 +1,24 @@
-# node-red-node-rdk-ros2
-在Node-RED中配合地平线RDK硬件及TROS使用ROS2的节点集合。
+English| [简体中文](./README_cn.md)
 
-## 安装
-可以在Node-RED编辑器中的节点管理面板中进行安装。也可以进入node-red安装目录进行手动安装：
+# node-red-node-rdk-ros2
+A collection of ROS2 nodes for using with Horizon RDK hardware and TROS in Node-RED.
+
+## Installation
+You can install it in the Node-RED Editor's node management panel. You can also manually install it in the node-red installation directory:
 ```
     cd ~/.node-red
     npm i node-red-node-rdk-ros2
 ```
 
-## 使用
+## Usage
 
-### 基本使用示例
-**Step 1 启动一个ros2发布者节点**
-先打开一个终端
+### Basic Usage Example
+**Step 1 Start a ros2 publisher node**
+First, open a terminal
 ```
     source /opt/tros/setup.bash
     ros2 run demo_nodes_cpp talker
 ```
 
-**Step 2 使用Node-RED rdk-ros2的节点获取消息**
-![ros2基本使用](./images/rdkros2_basic.gif)
+**Step 2 Use Node-RED rdk-ros2 nodes to get messages**
+![ros2 basic usage](./images/rdkros2_basic.gif)

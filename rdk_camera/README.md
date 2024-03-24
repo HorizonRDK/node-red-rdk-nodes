@@ -1,30 +1,31 @@
+English| [简体中文](./README_cn.md)
+
 # node-red-node-rdk-camera
-    在Node-RED中配合地平线RDK硬件使用的Camera相关功能的节点。
-    RDK X3常与两种接口类型的摄像头结合使用。第一种是最常用的USB摄像头，第二种是MIPI摄像头。RDK Camera库也支持这两种接口类型的摄像头。
+Nodes related to Camera functionalities in Node-RED for use with Horizon RDK hardware.
+RDK X3 is commonly used with two types of camera interfaces. The first type is the most commonly used USB camera, and the second type is the MIPI camera. The RDK Camera library also supports these two types of camera interfaces.
 
+## Installation
+You can install it via the node management panel in the Node-RED editor. Alternatively, you can manually install it by entering the node-red installation directory:
+```
+cd ~/.node-red
+npm i node-red-node-rdk-camera
+```
 
-## 安装
-可以在Node-RED编辑器中的节点管理面板中进行安装。也可以进入node-red安装目录进行手动安装：
-```
-    cd ~/.node-red
-    npm i node-red-node-rdk-camera
-```
-## 使用
-建议配合image-tools节点使用 [链接](https://flows.nodered.org/node/node-red-contrib-image-tools)
+## Usage
+It is recommended to use it with the image-tools node [link](https://flows.nodered.org/node/node-red-contrib-image-tools)
 
 ![usage of rdkcamera](./images/rdkcamera_imagestream.gif)
 
-### 拍照节点(rdk-camera takephoto)
+### Take Photo Node (rdk-camera takephoto)
 ![usage of takephoto](./images/rdkcamera_takephoto.gif)
 
-更多使用细节请参考说明文档：待发布
+For more usage details, please refer to the documentation: To be released
 
-### 图像流节点(rdk-camera imagestream)
+### Image Stream Node (rdk-camera imagestream)
 ![usage of imagestream](./images/rdkcamera_imagestream.gif)
 
-更多使用细节请参考说明文档：待发布
+For more usage details, please refer to the documentation: To be released
 
-## 注意
-+ rdk-camera中的节点需要与地平线RDK相关硬件及系统配合使用。[链接](https://developer.horizon.cc/)
-+ 目前rdk-camera中的节点在每个flow中不能同时使用，在启动一个camera节点时，要确保其他camera节点处于关闭状态。（可以给camera节点输入start/stop达到启动/关闭节点的效果）
-
+## Note
++ Nodes in rdk-camera need to be used in conjunction with related Horizon RDK hardware and systems. [link](https://developer.horizon.cc/)
++ Currently, nodes in rdk-camera cannot be used simultaneously in each flow. When starting a camera node, make sure that other camera nodes are in the closed state. (You can input start/stop to the camera node to start/close the node)

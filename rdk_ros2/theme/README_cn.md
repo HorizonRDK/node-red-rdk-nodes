@@ -1,4 +1,4 @@
-English| [简体中文](./README_cn.md)
+[English](./README.md) | 简体中文
 
 ## How to apply the theme to the Node-RED instance
 The theme included in this folder can be applied to Node-RED editor by following the next instructions:
