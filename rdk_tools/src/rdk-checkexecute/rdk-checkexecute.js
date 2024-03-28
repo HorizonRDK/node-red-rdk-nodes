@@ -8,7 +8,8 @@ module.exports = function(RED) {
 
     var checkCommand = 'sudo apt list --installed 2>/dev/null ';
     var installCommand = 'sudo apt install -y ';
-    var runCommand = 'source /opt/tros/setup.bash && ros2 launch ';
+    var runCommand = 'source /opt/tros/setup.bash';
+    var launchCommand = 'ros2 launch ';
 
     function sleep(ms) {
         return new Promise((resolve) => {
@@ -57,7 +58,12 @@ module.exports = function(RED) {
             }
 
             if(node.running === true && node.child){
-                RED.comms.publish("notify", RED._("rdk-checkexecute.errors.alreadyrun"));
+                if(Object.hasOwnProperty.call(msg, 'input')){
+                    node.child.stdin.write(msg.input);
+                }
+                else{
+                    RED.comms.publish("notify", RED._("rdk-checkexecute.errors.alreadyrun"));
+                }
                 return;
             }
             var nameList = packageName.trim().split(' ');
@@ -87,7 +93,14 @@ module.exports = function(RED) {
                 return;
             }
             // console.log(runCommand + launchName)
-            var childProcess = exec(runCommand + launchName, {
+            var commands = [runCommand, launchCommand];
+            if(Object.hasOwnProperty.call(msg, 'insert') && typeof msg.insert == 'string'){
+                commands.push(commands[1]);
+                commands[1] = msg.insert;
+            }
+            var assembledCommand = commands.join(' && ');
+            console.log(assembledCommand);
+            var childProcess = exec(assembledCommand + launchName, {
                 shell: '/bin/bash'
             }, function(e, out, err){
                 if(err){

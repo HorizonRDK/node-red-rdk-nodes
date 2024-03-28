@@ -1,0 +1,718 @@
+[
+    {
+        "id": "670db0923361fca8",
+        "type": "tab",
+        "label": "TROS OriginBot Racing Line Follower",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "3fd1f66b90a92c39",
+        "type": "group",
+        "z": "670db0923361fca8",
+        "name": "更新检测及提示",
+        "style": {
+            "fill": "#ffffbf",
+            "label": true,
+            "color": "#000000"
+        },
+        "nodes": [
+            "95b7786d0bd8d625",
+            "e0a7c0cf31ba0ff8",
+            "aac440eb0f80f369"
+        ],
+        "x": 174,
+        "y": 79,
+        "w": 612,
+        "h": 82
+    },
+    {
+        "id": "801fd97381c4b9d5",
+        "type": "group",
+        "z": "670db0923361fca8",
+        "name": "MIPI摄像头节点检查及启动",
+        "style": {
+            "stroke": "#d1d1d1",
+            "label": true,
+            "color": "#000000",
+            "fill": "#bfdbef"
+        },
+        "nodes": [
+            "329835ad4bb184f2",
+            "3fd402978032a3f6"
+        ],
+        "x": 354,
+        "y": 179,
+        "w": 612,
+        "h": 82
+    },
+    {
+        "id": "6ed5ab1eadbcaae8",
+        "type": "group",
+        "z": "670db0923361fca8",
+        "name": "感知功能节点检查及启动",
+        "style": {
+            "fill": "#e3f3d3",
+            "label": true,
+            "color": "#000000"
+        },
+        "nodes": [
+            "7415f5c0420699e3",
+            "4d7b4c565a93919b",
+            "84714716441620be"
+        ],
+        "x": 354,
+        "y": 279,
+        "w": 612,
+        "h": 82
+    },
+    {
+        "id": "1e512f98e6722461",
+        "type": "group",
+        "z": "670db0923361fca8",
+        "name": "控制功能节点检查及启动",
+        "style": {
+            "fill": "#ffefbf",
+            "label": true,
+            "color": "#000000"
+        },
+        "nodes": [
+            "6b3aab7de2e8d72d",
+            "cbaaebf450e30d70",
+            "c25e310a036b5e87",
+            "9f94e0ebff739e23"
+        ],
+        "x": 354,
+        "y": 379,
+        "w": 612,
+        "h": 142
+    },
+    {
+        "id": "ca144226b8b4a942",
+        "type": "group",
+        "z": "670db0923361fca8",
+        "name": "底盘功能节点检查及启动",
+        "style": {
+            "fill": "#bfc7d7",
+            "label": true,
+            "color": "#000000"
+        },
+        "nodes": [
+            "676f0e969a07922d",
+            "208efc76bd57556a"
+        ],
+        "x": 354,
+        "y": 539,
+        "w": 612,
+        "h": 82
+    },
+    {
+        "id": "329835ad4bb184f2",
+        "type": "change",
+        "z": "670db0923361fca8",
+        "g": "801fd97381c4b9d5",
+        "name": "设定MIPI节点名称",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "tros-mipi-cam",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "launch",
+                "pt": "msg",
+                "to": "mipi_cam mipi_cam_640x480_nv12_hbmem.launch.py",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 470,
+        "y": 220,
+        "wires": [
+            [
+                "3fd402978032a3f6"
+            ]
+        ]
+    },
+    {
+        "id": "7415f5c0420699e3",
+        "type": "change",
+        "z": "670db0923361fca8",
+        "g": "6ed5ab1eadbcaae8",
+        "name": "设定感知节点名称",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "tros-racing-track-detection-resnet",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "launch",
+                "pt": "msg",
+                "to": "racing_track_detection_resnet racing_track_detection_resnet.launch.py",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 670,
+        "y": 320,
+        "wires": [
+            [
+                "4d7b4c565a93919b"
+            ]
+        ]
+    },
+    {
+        "id": "6b3aab7de2e8d72d",
+        "type": "change",
+        "z": "670db0923361fca8",
+        "g": "1e512f98e6722461",
+        "name": "设定控制节点名称",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "tros-racing-control",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "launch",
+                "pt": "msg",
+                "to": "$join(\t   [\t       'racing_control racing_control.launch.py',\t       ' avoid_angular_ratio:=',\t       msg.avoid_angular_ratio,\t       ' avoid_linear_speed:=',\t       msg.avoid_linear_speed,\t       ' follow_angular_ratio:=',\t       msg.follow_angular_ratio,\t       ' follow_linear_speed:=',\t       msg.follow_linear_speed\t   ]\t)",
+                "tot": "jsonata"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 670,
+        "y": 480,
+        "wires": [
+            [
+                "cbaaebf450e30d70"
+            ]
+        ]
+    },
+    {
+        "id": "676f0e969a07922d",
+        "type": "change",
+        "z": "670db0923361fca8",
+        "g": "ca144226b8b4a942",
+        "name": "设定底盘节点名称",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "tros-originbot-base tros-serial tros-originbot-msgs",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "launch",
+                "pt": "msg",
+                "to": "originbot_base robot.launch.py ",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 470,
+        "y": 580,
+        "wires": [
+            [
+                "208efc76bd57556a"
+            ]
+        ]
+    },
+    {
+        "id": "557130d22bf0c621",
+        "type": "inject",
+        "z": "670db0923361fca8",
+        "name": "全部启动",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 100,
+        "y": 120,
+        "wires": [
+            [
+                "95b7786d0bd8d625"
+            ]
+        ]
+    },
+    {
+        "id": "ab13719ae9c07c04",
+        "type": "debug",
+        "z": "670db0923361fca8",
+        "name": "正常结束输出",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1080,
+        "y": 340,
+        "wires": []
+    },
+    {
+        "id": "95b7786d0bd8d625",
+        "type": "rdk-tools smartupdate",
+        "z": "670db0923361fca8",
+        "g": "3fd1f66b90a92c39",
+        "name": "",
+        "x": 260,
+        "y": 120,
+        "wires": [
+            [
+                "329835ad4bb184f2",
+                "84714716441620be",
+                "c25e310a036b5e87",
+                "aac440eb0f80f369",
+                "676f0e969a07922d"
+            ],
+            []
+        ]
+    },
+    {
+        "id": "f085f61d87a846af",
+        "type": "inject",
+        "z": "670db0923361fca8",
+        "name": "全部关闭",
+        "props": [
+            {
+                "p": "kill",
+                "v": "",
+                "vt": "date"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "x": 100,
+        "y": 200,
+        "wires": [
+            [
+                "4d7b4c565a93919b",
+                "cbaaebf450e30d70",
+                "208efc76bd57556a",
+                "3fd402978032a3f6"
+            ]
+        ]
+    },
+    {
+        "id": "fd1583b162ef03e9",
+        "type": "debug",
+        "z": "670db0923361fca8",
+        "name": "异常结束输出",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1080,
+        "y": 420,
+        "wires": []
+    },
+    {
+        "id": "3fd402978032a3f6",
+        "type": "rdk-tools checkexecute",
+        "z": "670db0923361fca8",
+        "g": "801fd97381c4b9d5",
+        "name": "",
+        "x": 870,
+        "y": 220,
+        "wires": [
+            [
+                "ab13719ae9c07c04"
+            ],
+            [
+                "fd1583b162ef03e9"
+            ]
+        ]
+    },
+    {
+        "id": "4d7b4c565a93919b",
+        "type": "rdk-tools checkexecute",
+        "z": "670db0923361fca8",
+        "g": "6ed5ab1eadbcaae8",
+        "name": "",
+        "x": 870,
+        "y": 320,
+        "wires": [
+            [
+                "ab13719ae9c07c04"
+            ],
+            [
+                "fd1583b162ef03e9"
+            ]
+        ]
+    },
+    {
+        "id": "cbaaebf450e30d70",
+        "type": "rdk-tools checkexecute",
+        "z": "670db0923361fca8",
+        "g": "1e512f98e6722461",
+        "name": "",
+        "x": 870,
+        "y": 480,
+        "wires": [
+            [
+                "ab13719ae9c07c04"
+            ],
+            [
+                "fd1583b162ef03e9"
+            ]
+        ]
+    },
+    {
+        "id": "208efc76bd57556a",
+        "type": "rdk-tools checkexecute",
+        "z": "670db0923361fca8",
+        "g": "ca144226b8b4a942",
+        "name": "",
+        "x": 870,
+        "y": 580,
+        "wires": [
+            [
+                "ab13719ae9c07c04"
+            ],
+            [
+                "fd1583b162ef03e9"
+            ]
+        ]
+    },
+    {
+        "id": "84714716441620be",
+        "type": "delay",
+        "z": "670db0923361fca8",
+        "g": "6ed5ab1eadbcaae8",
+        "name": "",
+        "pauseType": "delay",
+        "timeout": "3",
+        "timeoutUnits": "seconds",
+        "rate": "1",
+        "nbRateUnits": "1",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": false,
+        "allowrate": false,
+        "outputs": 1,
+        "x": 440,
+        "y": 320,
+        "wires": [
+            [
+                "7415f5c0420699e3"
+            ]
+        ]
+    },
+    {
+        "id": "c25e310a036b5e87",
+        "type": "delay",
+        "z": "670db0923361fca8",
+        "g": "1e512f98e6722461",
+        "name": "",
+        "pauseType": "delay",
+        "timeout": "6",
+        "timeoutUnits": "seconds",
+        "rate": "1",
+        "nbRateUnits": "1",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": false,
+        "allowrate": false,
+        "outputs": 1,
+        "x": 440,
+        "y": 420,
+        "wires": [
+            [
+                "9f94e0ebff739e23"
+            ]
+        ]
+    },
+    {
+        "id": "50d1e41ac9dc6344",
+        "type": "inject",
+        "z": "670db0923361fca8",
+        "name": "打开控制节点",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 230,
+        "y": 420,
+        "wires": [
+            [
+                "9f94e0ebff739e23"
+            ]
+        ]
+    },
+    {
+        "id": "d5244fbeb87a5a8e",
+        "type": "inject",
+        "z": "670db0923361fca8",
+        "name": "关闭控制节点",
+        "props": [
+            {
+                "p": "kill",
+                "v": "",
+                "vt": "str"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "x": 230,
+        "y": 480,
+        "wires": [
+            [
+                "cbaaebf450e30d70"
+            ]
+        ]
+    },
+    {
+        "id": "e0a7c0cf31ba0ff8",
+        "type": "rdk-tools texttoaudio",
+        "z": "670db0923361fca8",
+        "g": "3fd1f66b90a92c39",
+        "name": "",
+        "x": 690,
+        "y": 120,
+        "wires": []
+    },
+    {
+        "id": "aac440eb0f80f369",
+        "type": "change",
+        "z": "670db0923361fca8",
+        "g": "3fd1f66b90a92c39",
+        "name": "提示",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "智能更新完成",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 450,
+        "y": 120,
+        "wires": [
+            [
+                "e0a7c0cf31ba0ff8"
+            ]
+        ]
+    },
+    {
+        "id": "9f94e0ebff739e23",
+        "type": "change",
+        "z": "670db0923361fca8",
+        "g": "1e512f98e6722461",
+        "name": "设定控制参数",
+        "rules": [
+            {
+                "t": "set",
+                "p": "follow_angular_ratio",
+                "pt": "msg",
+                "to": "-1.0",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "follow_linear_speed",
+                "pt": "msg",
+                "to": "0.2",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "avoid_angular_ratio",
+                "pt": "msg",
+                "to": "0.2",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "avoid_linear_speed",
+                "pt": "msg",
+                "to": "0.1",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 460,
+        "y": 480,
+        "wires": [
+            [
+                "6b3aab7de2e8d72d"
+            ]
+        ]
+    },
+    {
+        "id": "b1f2048add97e83e",
+        "type": "comment",
+        "z": "670db0923361fca8",
+        "name": "名称：巡线小车一键启动   版本：0.0.2",
+        "info": "更新时间：2024-03-28\n更新时间：2024-03-28",
+        "x": 170,
+        "y": 20,
+        "wires": []
+    },
+    {
+        "id": "bd7da660fb5923ef",
+        "type": "comment",
+        "z": "670db0923361fca8",
+        "name": "注意：需要搭配OriginBot使用",
+        "info": "",
+        "x": 480,
+        "y": 20,
+        "wires": []
+    },
+    {
+        "id": "c52c5cf52c191f06",
+        "type": "inject",
+        "z": "670db0923361fca8",
+        "name": "进入论坛",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "https://developer.horizon.cc/forum",
+        "payloadType": "str",
+        "x": 720,
+        "y": 20,
+        "wires": [
+            [
+                "c70194e39eb486f0"
+            ]
+        ]
+    },
+    {
+        "id": "c70194e39eb486f0",
+        "type": "rdk-tools openurl",
+        "z": "670db0923361fca8",
+        "name": "",
+        "x": 860,
+        "y": 20,
+        "wires": []
+    },
+    {
+        "id": "c1e8a56813c0e8fc",
+        "type": "inject",
+        "z": "670db0923361fca8",
+        "name": "了解更多",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "https://developer.horizon.cc/nodehubdetail/189779578867385344",
+        "payloadType": "str",
+        "x": 100,
+        "y": 680,
+        "wires": [
+            [
+                "b639e45833ef78b1"
+            ]
+        ],
+        "icon": "node-red/file.svg"
+    },
+    {
+        "id": "b639e45833ef78b1",
+        "type": "rdk-tools openurl",
+        "z": "670db0923361fca8",
+        "name": "",
+        "x": 300,
+        "y": 680,
+        "wires": []
+    }
+]

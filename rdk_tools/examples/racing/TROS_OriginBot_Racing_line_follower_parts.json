@@ -1,0 +1,1492 @@
+[
+    {
+        "id": "33ac66380858f67a",
+        "type": "tab",
+        "label": "TROS OriginBot Racing Parts",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "8036ae6031193ec2",
+        "type": "group",
+        "z": "33ac66380858f67a",
+        "name": "智能更新及提示",
+        "style": {
+            "fill": "#ffffbf",
+            "label": true,
+            "color": "#000000"
+        },
+        "nodes": [
+            "d6e4aff0da0f93ed",
+            "07f9f4ecab074d30",
+            "3f5749c8774436b5",
+            "4f908c6a76a4dd85"
+        ],
+        "x": 194,
+        "y": 119,
+        "w": 572,
+        "h": 142
+    },
+    {
+        "id": "d5ace56eee54f1ef",
+        "type": "group",
+        "z": "33ac66380858f67a",
+        "name": "赛道检测节点检查及运行",
+        "style": {
+            "stroke": "#bfbfbf",
+            "label": true,
+            "color": "#000000",
+            "fill": "#ffefbf"
+        },
+        "nodes": [
+            "66a77fba71609efb",
+            "7fee45bfc52f9bb0",
+            "da0b072c0cc3f4f0",
+            "f21f031cacbfd6cd"
+        ],
+        "x": 194,
+        "y": 539,
+        "w": 572,
+        "h": 122
+    },
+    {
+        "id": "39712bfe53e85a57",
+        "type": "group",
+        "z": "33ac66380858f67a",
+        "name": "可视化页面启动",
+        "style": {
+            "fill": "#dbcbe7",
+            "label": true,
+            "color": "#000000"
+        },
+        "nodes": [
+            "cb0a6260dd49573c",
+            "c630f336d8ef16ac",
+            "ef6e007dbb7b80bf"
+        ],
+        "x": 314,
+        "y": 699,
+        "w": 512,
+        "h": 82
+    },
+    {
+        "id": "48e6f6f337e3c995",
+        "type": "group",
+        "z": "33ac66380858f67a",
+        "name": "MIPI节点检查及运行",
+        "style": {
+            "label": true,
+            "fill": "#e3f3d3",
+            "color": "#000000"
+        },
+        "nodes": [
+            "dc693fe552be9315",
+            "dc520a6b5ec77106",
+            "30683a7cdf764a53",
+            "f09133dc5cfd993d"
+        ],
+        "x": 194,
+        "y": 339,
+        "w": 572,
+        "h": 122
+    },
+    {
+        "id": "51f7de7535e4140a",
+        "type": "group",
+        "z": "33ac66380858f67a",
+        "name": "障碍物节点检查及运行",
+        "style": {
+            "fill": "#bfdbef",
+            "label": true,
+            "color": "#000000",
+            "fill-opacity": "0.56"
+        },
+        "nodes": [
+            "adfa24a6e1a3474d",
+            "94c4716e39a10276",
+            "ba0e0f612c2e8a20",
+            "2c74c154db287075"
+        ],
+        "x": 194,
+        "y": 859,
+        "w": 572,
+        "h": 122
+    },
+    {
+        "id": "fcb1d9711e7853cd",
+        "type": "group",
+        "z": "33ac66380858f67a",
+        "name": "巡线控制节点检查及运行",
+        "style": {
+            "label": true,
+            "fill": "#bfc7d7",
+            "color": "#000000",
+            "fill-opacity": "0.65"
+        },
+        "nodes": [
+            "1dbd74af05b04c71",
+            "62a6f66aada48f0b",
+            "2478c3921ac7fb02",
+            "312193f2c8f51966"
+        ],
+        "x": 194,
+        "y": 1059,
+        "w": 572,
+        "h": 122
+    },
+    {
+        "id": "222fcd9b2151df74",
+        "type": "group",
+        "z": "33ac66380858f67a",
+        "name": "OriginBot底盘节点检查及运行",
+        "style": {
+            "fill": "#d1d1d1",
+            "fill-opacity": "0.5",
+            "label": true,
+            "color": "#000000"
+        },
+        "nodes": [
+            "0134c8104ffa16f7",
+            "c47fc65d4235f791",
+            "0584e8fc427f95e3",
+            "3aa60937494fd5b7"
+        ],
+        "x": 194,
+        "y": 1259,
+        "w": 572,
+        "h": 122
+    },
+    {
+        "id": "4570167b2fdb6ea9",
+        "type": "group",
+        "z": "33ac66380858f67a",
+        "name": "动态设置ROS2参数",
+        "style": {
+            "fill": "#ffbfbf",
+            "label": true,
+            "color": "#000000"
+        },
+        "nodes": [
+            "a7327fb4137f3f9a",
+            "91dcf426d4f744d0"
+        ],
+        "x": 454,
+        "y": 1491.5,
+        "w": 412,
+        "h": 97
+    },
+    {
+        "id": "d6e4aff0da0f93ed",
+        "type": "rdk-tools smartupdate",
+        "z": "33ac66380858f67a",
+        "g": "8036ae6031193ec2",
+        "name": "",
+        "x": 280,
+        "y": 160,
+        "wires": [
+            [
+                "07f9f4ecab074d30"
+            ],
+            []
+        ]
+    },
+    {
+        "id": "07f9f4ecab074d30",
+        "type": "change",
+        "z": "33ac66380858f67a",
+        "g": "8036ae6031193ec2",
+        "name": "更新提示",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "智能更新已完成",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 460,
+        "y": 160,
+        "wires": [
+            [
+                "3f5749c8774436b5"
+            ]
+        ]
+    },
+    {
+        "id": "3f5749c8774436b5",
+        "type": "rdk-tools texttoaudio",
+        "z": "33ac66380858f67a",
+        "g": "8036ae6031193ec2",
+        "name": "",
+        "x": 670,
+        "y": 160,
+        "wires": []
+    },
+    {
+        "id": "5ff7ab8dbdfe617e",
+        "type": "inject",
+        "z": "33ac66380858f67a",
+        "name": "更新",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "str",
+        "x": 90,
+        "y": 160,
+        "wires": [
+            [
+                "d6e4aff0da0f93ed"
+            ]
+        ],
+        "icon": "node-red-node-rdk-tools/update.svg"
+    },
+    {
+        "id": "7fee45bfc52f9bb0",
+        "type": "rdk-tools checkexecute",
+        "z": "33ac66380858f67a",
+        "g": "d5ace56eee54f1ef",
+        "name": "",
+        "x": 670,
+        "y": 580,
+        "wires": [
+            [
+                "e266f736b20295d7"
+            ],
+            [
+                "b8fe690215be17dc"
+            ]
+        ]
+    },
+    {
+        "id": "66a77fba71609efb",
+        "type": "change",
+        "z": "33ac66380858f67a",
+        "g": "d5ace56eee54f1ef",
+        "name": "设定赛道检测节点",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "tros-racing-track-detection-resnet",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "launch",
+                "pt": "msg",
+                "to": "racing_track_detection_resnet racing_track_detection_resnet.launch.py",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "insert",
+                "pt": "msg",
+                "to": "export WEB_SHOW=TRUE",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 310,
+        "y": 580,
+        "wires": [
+            [
+                "7fee45bfc52f9bb0",
+                "ef6e007dbb7b80bf"
+            ]
+        ]
+    },
+    {
+        "id": "e266f736b20295d7",
+        "type": "debug",
+        "z": "33ac66380858f67a",
+        "name": "正常结束信息",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1020,
+        "y": 700,
+        "wires": []
+    },
+    {
+        "id": "b8fe690215be17dc",
+        "type": "debug",
+        "z": "33ac66380858f67a",
+        "name": "异常结束信息",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1020,
+        "y": 740,
+        "wires": []
+    },
+    {
+        "id": "cb0a6260dd49573c",
+        "type": "change",
+        "z": "33ac66380858f67a",
+        "g": "39712bfe53e85a57",
+        "name": "设置IP地址",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "http://{host}:8000",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 570,
+        "y": 740,
+        "wires": [
+            [
+                "c630f336d8ef16ac"
+            ]
+        ]
+    },
+    {
+        "id": "c630f336d8ef16ac",
+        "type": "rdk-tools openurl",
+        "z": "33ac66380858f67a",
+        "g": "39712bfe53e85a57",
+        "name": "",
+        "x": 740,
+        "y": 740,
+        "wires": []
+    },
+    {
+        "id": "d520f7f85e64c07a",
+        "type": "inject",
+        "z": "33ac66380858f67a",
+        "name": "关闭",
+        "props": [
+            {
+                "p": "kill",
+                "v": "",
+                "vt": "str"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "x": 90,
+        "y": 600,
+        "wires": [
+            [
+                "7fee45bfc52f9bb0"
+            ]
+        ],
+        "icon": "font-awesome/fa-ban"
+    },
+    {
+        "id": "93eb6c74eca5615b",
+        "type": "inject",
+        "z": "33ac66380858f67a",
+        "name": "打开视频页面",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "str",
+        "x": 110,
+        "y": 740,
+        "wires": [
+            [
+                "cb0a6260dd49573c"
+            ]
+        ],
+        "icon": "font-awesome/fa-chain-broken"
+    },
+    {
+        "id": "27c46d557cca6d87",
+        "type": "inject",
+        "z": "33ac66380858f67a",
+        "name": "启动",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "str",
+        "x": 90,
+        "y": 560,
+        "wires": [
+            [
+                "66a77fba71609efb"
+            ]
+        ],
+        "icon": "font-awesome/fa-power-off"
+    },
+    {
+        "id": "dc520a6b5ec77106",
+        "type": "change",
+        "z": "33ac66380858f67a",
+        "g": "48e6f6f337e3c995",
+        "name": "设定MIPI节点",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "tros-mipi-cam",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "launch",
+                "pt": "msg",
+                "to": "mipi_cam mipi_cam_640x480_nv12_hbmem.launch.py",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 300,
+        "y": 380,
+        "wires": [
+            [
+                "dc693fe552be9315"
+            ]
+        ]
+    },
+    {
+        "id": "dc693fe552be9315",
+        "type": "rdk-tools checkexecute",
+        "z": "33ac66380858f67a",
+        "g": "48e6f6f337e3c995",
+        "name": "",
+        "x": 670,
+        "y": 380,
+        "wires": [
+            [
+                "e266f736b20295d7"
+            ],
+            [
+                "b8fe690215be17dc"
+            ]
+        ]
+    },
+    {
+        "id": "d85e7ba085d3ef4e",
+        "type": "inject",
+        "z": "33ac66380858f67a",
+        "name": "启动",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "str",
+        "x": 90,
+        "y": 360,
+        "wires": [
+            [
+                "dc520a6b5ec77106"
+            ]
+        ],
+        "icon": "font-awesome/fa-power-off"
+    },
+    {
+        "id": "1d8dda2e9d5786dd",
+        "type": "inject",
+        "z": "33ac66380858f67a",
+        "name": "关闭",
+        "props": [
+            {
+                "p": "kill",
+                "v": "",
+                "vt": "str"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "x": 90,
+        "y": 400,
+        "wires": [
+            [
+                "dc693fe552be9315"
+            ]
+        ],
+        "icon": "font-awesome/fa-ban"
+    },
+    {
+        "id": "ef6e007dbb7b80bf",
+        "type": "delay",
+        "z": "33ac66380858f67a",
+        "g": "39712bfe53e85a57",
+        "name": "",
+        "pauseType": "delay",
+        "timeout": "10",
+        "timeoutUnits": "seconds",
+        "rate": "1",
+        "nbRateUnits": "1",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": false,
+        "allowrate": false,
+        "outputs": 1,
+        "x": 400,
+        "y": 740,
+        "wires": [
+            [
+                "cb0a6260dd49573c"
+            ]
+        ]
+    },
+    {
+        "id": "c864ad86ae4d5a5c",
+        "type": "comment",
+        "z": "33ac66380858f67a",
+        "name": "步骤1: 触发更新",
+        "info": "",
+        "x": 100,
+        "y": 100,
+        "wires": []
+    },
+    {
+        "id": "4f908c6a76a4dd85",
+        "type": "comment",
+        "z": "33ac66380858f67a",
+        "g": "8036ae6031193ec2",
+        "name": "智能更新根据日期每日更新一次，如果需要多次更新请使用终端手动更新",
+        "info": "",
+        "x": 470,
+        "y": 220,
+        "wires": []
+    },
+    {
+        "id": "905bda0169776a60",
+        "type": "comment",
+        "z": "33ac66380858f67a",
+        "name": "步骤2: 启动MIPI相机",
+        "info": "",
+        "x": 110,
+        "y": 300,
+        "wires": []
+    },
+    {
+        "id": "e11e65ccf92e5205",
+        "type": "comment",
+        "z": "33ac66380858f67a",
+        "name": "步骤3: 启动赛道检测功能",
+        "info": "",
+        "x": 130,
+        "y": 500,
+        "wires": []
+    },
+    {
+        "id": "9febd2c04333d3c0",
+        "type": "comment",
+        "z": "33ac66380858f67a",
+        "name": "步骤4: 启动障碍物检测功能",
+        "info": "",
+        "x": 130,
+        "y": 820,
+        "wires": []
+    },
+    {
+        "id": "adfa24a6e1a3474d",
+        "type": "change",
+        "z": "33ac66380858f67a",
+        "g": "51f7de7535e4140a",
+        "name": "设定障碍物检测节点",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "tros-racing-obstacle-detection-yolo",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "insert",
+                "pt": "msg",
+                "to": "cp -r /opt/tros/lib/racing_obstacle_detection_yolo/config/ . && export WEB_SHOW=TRUE",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "launch",
+                "pt": "msg",
+                "to": "racing_obstacle_detection_yolo racing_obstacle_detection_yolo.launch.py",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 320,
+        "y": 900,
+        "wires": [
+            [
+                "ef6e007dbb7b80bf",
+                "94c4716e39a10276"
+            ]
+        ]
+    },
+    {
+        "id": "94c4716e39a10276",
+        "type": "rdk-tools checkexecute",
+        "z": "33ac66380858f67a",
+        "g": "51f7de7535e4140a",
+        "name": "",
+        "x": 670,
+        "y": 900,
+        "wires": [
+            [
+                "e266f736b20295d7"
+            ],
+            [
+                "b8fe690215be17dc"
+            ]
+        ]
+    },
+    {
+        "id": "a8c2bfe36cce53f1",
+        "type": "inject",
+        "z": "33ac66380858f67a",
+        "name": "关闭",
+        "props": [
+            {
+                "p": "kill",
+                "v": "",
+                "vt": "str"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "x": 90,
+        "y": 920,
+        "wires": [
+            [
+                "94c4716e39a10276"
+            ]
+        ],
+        "icon": "font-awesome/fa-ban"
+    },
+    {
+        "id": "92bf0ee63744689a",
+        "type": "inject",
+        "z": "33ac66380858f67a",
+        "name": "启动",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "str",
+        "x": 90,
+        "y": 880,
+        "wires": [
+            [
+                "adfa24a6e1a3474d"
+            ]
+        ],
+        "icon": "font-awesome/fa-power-off"
+    },
+    {
+        "id": "7929549dd3e27b66",
+        "type": "comment",
+        "z": "33ac66380858f67a",
+        "name": "步骤5: 启动巡线控制",
+        "info": "",
+        "x": 110,
+        "y": 1020,
+        "wires": []
+    },
+    {
+        "id": "1dbd74af05b04c71",
+        "type": "change",
+        "z": "33ac66380858f67a",
+        "g": "fcb1d9711e7853cd",
+        "name": "设定巡线控制节点",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "tros-racing-control",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "launch",
+                "pt": "msg",
+                "to": "racing_control racing_control.launch.py avoid_angular_ratio:=0.2 avoid_linear_speed:=0.1 follow_angular_ratio:=-1.0 follow_linear_speed:=0.1",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 310,
+        "y": 1100,
+        "wires": [
+            [
+                "62a6f66aada48f0b"
+            ]
+        ]
+    },
+    {
+        "id": "62a6f66aada48f0b",
+        "type": "rdk-tools checkexecute",
+        "z": "33ac66380858f67a",
+        "g": "fcb1d9711e7853cd",
+        "name": "",
+        "x": 670,
+        "y": 1100,
+        "wires": [
+            [
+                "e266f736b20295d7"
+            ],
+            [
+                "b8fe690215be17dc"
+            ]
+        ]
+    },
+    {
+        "id": "2ac3607de615ea0f",
+        "type": "inject",
+        "z": "33ac66380858f67a",
+        "name": "关闭",
+        "props": [
+            {
+                "p": "kill",
+                "v": "",
+                "vt": "str"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "x": 90,
+        "y": 1120,
+        "wires": [
+            [
+                "62a6f66aada48f0b"
+            ]
+        ],
+        "icon": "font-awesome/fa-ban"
+    },
+    {
+        "id": "e192d0a46507ca89",
+        "type": "inject",
+        "z": "33ac66380858f67a",
+        "name": "启动",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "str",
+        "x": 90,
+        "y": 1080,
+        "wires": [
+            [
+                "1dbd74af05b04c71"
+            ]
+        ],
+        "icon": "font-awesome/fa-power-off"
+    },
+    {
+        "id": "c34d8a241d8829ca",
+        "type": "comment",
+        "z": "33ac66380858f67a",
+        "name": "步骤6: 启动OriginBot底盘",
+        "info": "",
+        "x": 130,
+        "y": 1220,
+        "wires": []
+    },
+    {
+        "id": "0134c8104ffa16f7",
+        "type": "change",
+        "z": "33ac66380858f67a",
+        "g": "222fcd9b2151df74",
+        "name": "设定OriginBot底盘节点",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "tros-originbot-base tros-serial tros-originbot-msgs",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "launch",
+                "pt": "msg",
+                "to": "originbot_base robot.launch.py",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 320,
+        "y": 1300,
+        "wires": [
+            [
+                "c47fc65d4235f791"
+            ]
+        ]
+    },
+    {
+        "id": "c47fc65d4235f791",
+        "type": "rdk-tools checkexecute",
+        "z": "33ac66380858f67a",
+        "g": "222fcd9b2151df74",
+        "name": "",
+        "x": 670,
+        "y": 1300,
+        "wires": [
+            [
+                "e266f736b20295d7"
+            ],
+            [
+                "b8fe690215be17dc"
+            ]
+        ]
+    },
+    {
+        "id": "8ce1b4a6ab023905",
+        "type": "inject",
+        "z": "33ac66380858f67a",
+        "name": "关闭",
+        "props": [
+            {
+                "p": "kill",
+                "v": "",
+                "vt": "str"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "x": 90,
+        "y": 1320,
+        "wires": [
+            [
+                "c47fc65d4235f791"
+            ]
+        ],
+        "icon": "font-awesome/fa-ban"
+    },
+    {
+        "id": "e6641a2b87319c4f",
+        "type": "inject",
+        "z": "33ac66380858f67a",
+        "name": "启动",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "str",
+        "x": 90,
+        "y": 1280,
+        "wires": [
+            [
+                "0134c8104ffa16f7"
+            ]
+        ],
+        "icon": "font-awesome/fa-power-off"
+    },
+    {
+        "id": "39e2dedf24b0a306",
+        "type": "comment",
+        "z": "33ac66380858f67a",
+        "name": "名称：巡线小车功能拆解    版本：0.0.1",
+        "info": "0.0.1 2024-03-28",
+        "x": 170,
+        "y": 20,
+        "wires": []
+    },
+    {
+        "id": "090810e9a6cef512",
+        "type": "comment",
+        "z": "33ac66380858f67a",
+        "name": "注意：需要搭配OriginBot使用",
+        "info": "",
+        "x": 480,
+        "y": 20,
+        "wires": []
+    },
+    {
+        "id": "b4757be86bb09bae",
+        "type": "comment",
+        "z": "33ac66380858f67a",
+        "name": "步骤7: 动态调整控制参数",
+        "info": "",
+        "x": 130,
+        "y": 1420,
+        "wires": []
+    },
+    {
+        "id": "a7327fb4137f3f9a",
+        "type": "exec",
+        "z": "33ac66380858f67a",
+        "g": "4570167b2fdb6ea9",
+        "command": "source /opt/tros/setup.bash && ros2 param set /GetLineCoordinate ",
+        "addpay": "payload",
+        "append": "",
+        "useSpawn": "false",
+        "timer": "",
+        "winHide": false,
+        "oldrc": false,
+        "name": "动态设定参数",
+        "x": 760,
+        "y": 1540,
+        "wires": [
+            [
+                "6725608ee4978c64"
+            ],
+            [
+                "e2381a0df0405ba5"
+            ],
+            []
+        ]
+    },
+    {
+        "id": "cf05dd7a7bccddef",
+        "type": "inject",
+        "z": "33ac66380858f67a",
+        "name": "设定行驶线速度",
+        "props": [
+            {
+                "p": "topic",
+                "vt": "str"
+            },
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "follow_linear_speed",
+        "payload": "0.5",
+        "payloadType": "num",
+        "x": 120,
+        "y": 1480,
+        "wires": [
+            [
+                "91dcf426d4f744d0"
+            ]
+        ],
+        "icon": "font-awesome/fa-car"
+    },
+    {
+        "id": "91dcf426d4f744d0",
+        "type": "change",
+        "z": "33ac66380858f67a",
+        "g": "4570167b2fdb6ea9",
+        "name": "拼接字段与数值",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "$join([msg.topic, $string(msg.payload)], ' ')",
+                "tot": "jsonata"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 560,
+        "y": 1540,
+        "wires": [
+            [
+                "a7327fb4137f3f9a"
+            ]
+        ]
+    },
+    {
+        "id": "6725608ee4978c64",
+        "type": "debug",
+        "z": "33ac66380858f67a",
+        "name": "动态设置信息",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 980,
+        "y": 1460,
+        "wires": []
+    },
+    {
+        "id": "e2381a0df0405ba5",
+        "type": "debug",
+        "z": "33ac66380858f67a",
+        "name": "动态设置错误",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 980,
+        "y": 1500,
+        "wires": []
+    },
+    {
+        "id": "56e8d4b7d781242b",
+        "type": "inject",
+        "z": "33ac66380858f67a",
+        "name": "设定行驶角速度比例",
+        "props": [
+            {
+                "p": "topic",
+                "vt": "str"
+            },
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "follow_angular_ratio",
+        "payload": "-0.1",
+        "payloadType": "num",
+        "x": 130,
+        "y": 1520,
+        "wires": [
+            [
+                "91dcf426d4f744d0"
+            ]
+        ],
+        "icon": "node-red/timer.svg"
+    },
+    {
+        "id": "9ebbf8e4a1e952ce",
+        "type": "inject",
+        "z": "33ac66380858f67a",
+        "name": "设定避障线速度",
+        "props": [
+            {
+                "p": "topic",
+                "vt": "str"
+            },
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "avoid_linear_speed",
+        "payload": "0.25",
+        "payloadType": "num",
+        "x": 120,
+        "y": 1560,
+        "wires": [
+            [
+                "91dcf426d4f744d0"
+            ]
+        ],
+        "icon": "font-awesome/fa-wrench"
+    },
+    {
+        "id": "628ad1de57d9e2c1",
+        "type": "inject",
+        "z": "33ac66380858f67a",
+        "name": "设定避障角速度比例",
+        "props": [
+            {
+                "p": "topic",
+                "vt": "str"
+            },
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "avoid_angular_ratio",
+        "payload": "1.1",
+        "payloadType": "num",
+        "x": 130,
+        "y": 1600,
+        "wires": [
+            [
+                "91dcf426d4f744d0"
+            ]
+        ]
+    },
+    {
+        "id": "3aa60937494fd5b7",
+        "type": "inject",
+        "z": "33ac66380858f67a",
+        "g": "222fcd9b2151df74",
+        "name": "了解更多",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "https://developer.horizon.cc/nodehubdetail/170117036053371431",
+        "payloadType": "str",
+        "x": 300,
+        "y": 1340,
+        "wires": [
+            [
+                "0584e8fc427f95e3"
+            ]
+        ],
+        "icon": "node-red/file.svg"
+    },
+    {
+        "id": "0584e8fc427f95e3",
+        "type": "rdk-tools openurl",
+        "z": "33ac66380858f67a",
+        "g": "222fcd9b2151df74",
+        "name": "",
+        "x": 500,
+        "y": 1340,
+        "wires": []
+    },
+    {
+        "id": "2478c3921ac7fb02",
+        "type": "inject",
+        "z": "33ac66380858f67a",
+        "g": "fcb1d9711e7853cd",
+        "name": "了解更多",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "https://developer.horizon.cc/nodehubdetail/184587678518566923",
+        "payloadType": "str",
+        "x": 300,
+        "y": 1140,
+        "wires": [
+            [
+                "312193f2c8f51966"
+            ]
+        ],
+        "icon": "node-red/file.svg"
+    },
+    {
+        "id": "312193f2c8f51966",
+        "type": "rdk-tools openurl",
+        "z": "33ac66380858f67a",
+        "g": "fcb1d9711e7853cd",
+        "name": "",
+        "x": 520,
+        "y": 1140,
+        "wires": []
+    },
+    {
+        "id": "ba0e0f612c2e8a20",
+        "type": "inject",
+        "z": "33ac66380858f67a",
+        "g": "51f7de7535e4140a",
+        "name": "了解更多",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "https://developer.horizon.cc/nodehubdetail/184587678518566921",
+        "payloadType": "str",
+        "x": 300,
+        "y": 940,
+        "wires": [
+            [
+                "2c74c154db287075"
+            ]
+        ],
+        "icon": "node-red/file.svg"
+    },
+    {
+        "id": "2c74c154db287075",
+        "type": "rdk-tools openurl",
+        "z": "33ac66380858f67a",
+        "g": "51f7de7535e4140a",
+        "name": "",
+        "x": 520,
+        "y": 940,
+        "wires": []
+    },
+    {
+        "id": "da0b072c0cc3f4f0",
+        "type": "inject",
+        "z": "33ac66380858f67a",
+        "g": "d5ace56eee54f1ef",
+        "name": "了解更多",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "https://developer.horizon.cc/nodehubdetail/184587678518566919",
+        "payloadType": "str",
+        "x": 300,
+        "y": 620,
+        "wires": [
+            [
+                "f21f031cacbfd6cd"
+            ]
+        ],
+        "icon": "node-red/file.svg"
+    },
+    {
+        "id": "f21f031cacbfd6cd",
+        "type": "rdk-tools openurl",
+        "z": "33ac66380858f67a",
+        "g": "d5ace56eee54f1ef",
+        "name": "",
+        "x": 520,
+        "y": 620,
+        "wires": []
+    },
+    {
+        "id": "30683a7cdf764a53",
+        "type": "inject",
+        "z": "33ac66380858f67a",
+        "g": "48e6f6f337e3c995",
+        "name": "了解更多",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "https://developer.horizon.cc/nodehubdetail/168958376283445781",
+        "payloadType": "str",
+        "x": 300,
+        "y": 420,
+        "wires": [
+            [
+                "f09133dc5cfd993d"
+            ]
+        ],
+        "icon": "node-red/file.svg"
+    },
+    {
+        "id": "f09133dc5cfd993d",
+        "type": "rdk-tools openurl",
+        "z": "33ac66380858f67a",
+        "g": "48e6f6f337e3c995",
+        "name": "",
+        "x": 520,
+        "y": 420,
+        "wires": []
+    },
+    {
+        "id": "3295a8943d5a15e9",
+        "type": "inject",
+        "z": "33ac66380858f67a",
+        "name": "进入论坛",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "https://developer.horizon.cc/forum",
+        "payloadType": "str",
+        "x": 740,
+        "y": 20,
+        "wires": [
+            [
+                "b2e93b59bf447380"
+            ]
+        ]
+    },
+    {
+        "id": "b2e93b59bf447380",
+        "type": "rdk-tools openurl",
+        "z": "33ac66380858f67a",
+        "name": "",
+        "x": 880,
+        "y": 20,
+        "wires": []
+    }
+]
