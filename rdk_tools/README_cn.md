@@ -1,4 +1,4 @@
-[English](./README.md) | 简体中文
+[English](./rdk_tools/README.md) | 简体中文
 
 # node-red-node-rdk-tools
 在Node-RED中配合地平线RDK硬件使用的工具节点。

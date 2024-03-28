@@ -1,0 +1,415 @@
+[
+    {
+        "id": "45ef0c56f4e7b324",
+        "type": "tab",
+        "label": "TROS Hand LMK Detection",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "15a56cfacc7d1647",
+        "type": "group",
+        "z": "45ef0c56f4e7b324",
+        "name": "更新检测及提示",
+        "style": {
+            "label": true,
+            "fill": "#ffffbf",
+            "color": "#000000"
+        },
+        "nodes": [
+            "d7645f4b740875ad",
+            "080741f0120e8669",
+            "4d9db0021ac3b8cf"
+        ],
+        "x": 174,
+        "y": 59,
+        "w": 572,
+        "h": 82
+    },
+    {
+        "id": "32198fb492fb1836",
+        "type": "group",
+        "z": "45ef0c56f4e7b324",
+        "name": "检查及运行手势检查节点",
+        "style": {
+            "label": true,
+            "fill": "#bfdbef",
+            "color": "#000000"
+        },
+        "nodes": [
+            "a677cc24695cdb04",
+            "63e07ddd611c09f3"
+        ],
+        "x": 334,
+        "y": 199,
+        "w": 452,
+        "h": 82
+    },
+    {
+        "id": "907b9d761791f52e",
+        "type": "group",
+        "z": "45ef0c56f4e7b324",
+        "name": "打开可视化页面",
+        "style": {
+            "label": true,
+            "fill": "#bfc7d7",
+            "fill-opacity": "0.48",
+            "color": "#000000"
+        },
+        "nodes": [
+            "81d57d39d1d269bf",
+            "23513e42aed96541",
+            "ca0543cbdfb04fc7"
+        ],
+        "x": 334,
+        "y": 359,
+        "w": 492,
+        "h": 82
+    },
+    {
+        "id": "7f1ee4e28b5ebf08",
+        "type": "inject",
+        "z": "45ef0c56f4e7b324",
+        "name": "启动",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "str",
+        "x": 90,
+        "y": 100,
+        "wires": [
+            [
+                "d7645f4b740875ad"
+            ]
+        ]
+    },
+    {
+        "id": "e1e165456083e330",
+        "type": "inject",
+        "z": "45ef0c56f4e7b324",
+        "name": "关闭",
+        "props": [
+            {
+                "p": "kill",
+                "v": "",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "x": 90,
+        "y": 140,
+        "wires": [
+            [
+                "63e07ddd611c09f3"
+            ]
+        ]
+    },
+    {
+        "id": "067cb1c3fbcf4814",
+        "type": "comment",
+        "z": "45ef0c56f4e7b324",
+        "name": "名称：人手关键点检测   版本：0.0.1",
+        "info": "",
+        "x": 160,
+        "y": 20,
+        "wires": []
+    },
+    {
+        "id": "a85bfa2fb3348ab8",
+        "type": "comment",
+        "z": "45ef0c56f4e7b324",
+        "name": "注意：需要搭配MIPI摄像头使用",
+        "info": "",
+        "x": 470,
+        "y": 20,
+        "wires": []
+    },
+    {
+        "id": "8a9fe1abf1a958f3",
+        "type": "inject",
+        "z": "45ef0c56f4e7b324",
+        "name": "了解更多",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "https://developer.horizon.cc/nodehubdetail/168958376283445768",
+        "payloadType": "str",
+        "x": 700,
+        "y": 20,
+        "wires": [
+            [
+                "5333b3b268537038"
+            ]
+        ]
+    },
+    {
+        "id": "5333b3b268537038",
+        "type": "rdk-tools openurl",
+        "z": "45ef0c56f4e7b324",
+        "name": "",
+        "x": 860,
+        "y": 20,
+        "wires": []
+    },
+    {
+        "id": "e44a432a149b3dc6",
+        "type": "debug",
+        "z": "45ef0c56f4e7b324",
+        "name": "正常结束提示",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 920,
+        "y": 220,
+        "wires": []
+    },
+    {
+        "id": "2267e33a7bdac7bd",
+        "type": "debug",
+        "z": "45ef0c56f4e7b324",
+        "name": "异常结束提示",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 920,
+        "y": 280,
+        "wires": []
+    },
+    {
+        "id": "1bc7b14be9646e89",
+        "type": "inject",
+        "z": "45ef0c56f4e7b324",
+        "name": "打开页面",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "str",
+        "x": 200,
+        "y": 400,
+        "wires": [
+            [
+                "23513e42aed96541"
+            ]
+        ]
+    },
+    {
+        "id": "d7645f4b740875ad",
+        "type": "rdk-tools smartupdate",
+        "z": "45ef0c56f4e7b324",
+        "g": "15a56cfacc7d1647",
+        "name": "",
+        "x": 260,
+        "y": 100,
+        "wires": [
+            [
+                "080741f0120e8669",
+                "a677cc24695cdb04",
+                "81d57d39d1d269bf"
+            ],
+            []
+        ]
+    },
+    {
+        "id": "080741f0120e8669",
+        "type": "change",
+        "z": "45ef0c56f4e7b324",
+        "g": "15a56cfacc7d1647",
+        "name": "更新提示",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "智能更新已完成",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 460,
+        "y": 100,
+        "wires": [
+            [
+                "4d9db0021ac3b8cf"
+            ]
+        ]
+    },
+    {
+        "id": "4d9db0021ac3b8cf",
+        "type": "rdk-tools texttoaudio",
+        "z": "45ef0c56f4e7b324",
+        "g": "15a56cfacc7d1647",
+        "name": "",
+        "x": 650,
+        "y": 100,
+        "wires": []
+    },
+    {
+        "id": "a677cc24695cdb04",
+        "type": "change",
+        "z": "45ef0c56f4e7b324",
+        "g": "32198fb492fb1836",
+        "name": "设定人手关键点节点",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "tros-hand-lmk-detection",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "launch",
+                "pt": "msg",
+                "to": "hand_lmk_detection hand_lmk_detection.launch.py",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "insert",
+                "pt": "msg",
+                "to": "cp -r /opt/tros/${TROS_DISTRO}/lib/mono2d_body_detection/config/ . && cp -r /opt/tros/${TROS_DISTRO}/lib/hand_lmk_detection/config/ . && export CAM_TYPE=mipi",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 460,
+        "y": 240,
+        "wires": [
+            [
+                "63e07ddd611c09f3"
+            ]
+        ]
+    },
+    {
+        "id": "63e07ddd611c09f3",
+        "type": "rdk-tools checkexecute",
+        "z": "45ef0c56f4e7b324",
+        "g": "32198fb492fb1836",
+        "name": "",
+        "x": 690,
+        "y": 240,
+        "wires": [
+            [
+                "e44a432a149b3dc6"
+            ],
+            [
+                "2267e33a7bdac7bd"
+            ]
+        ]
+    },
+    {
+        "id": "81d57d39d1d269bf",
+        "type": "delay",
+        "z": "45ef0c56f4e7b324",
+        "g": "907b9d761791f52e",
+        "name": "",
+        "pauseType": "delay",
+        "timeout": "10",
+        "timeoutUnits": "seconds",
+        "rate": "1",
+        "nbRateUnits": "1",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": false,
+        "allowrate": false,
+        "outputs": 1,
+        "x": 420,
+        "y": 400,
+        "wires": [
+            [
+                "23513e42aed96541"
+            ]
+        ]
+    },
+    {
+        "id": "23513e42aed96541",
+        "type": "change",
+        "z": "45ef0c56f4e7b324",
+        "g": "907b9d761791f52e",
+        "name": "设定链接",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "http://{host}:8000",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 580,
+        "y": 400,
+        "wires": [
+            [
+                "ca0543cbdfb04fc7"
+            ]
+        ]
+    },
+    {
+        "id": "ca0543cbdfb04fc7",
+        "type": "rdk-tools openurl",
+        "z": "45ef0c56f4e7b324",
+        "g": "907b9d761791f52e",
+        "name": "",
+        "x": 740,
+        "y": 400,
+        "wires": []
+    }
+]

@@ -1,0 +1,11 @@
+[
+    {
+        "id": "f3a9b48a22a9c445",
+        "type": "rdk-tools openurl",
+        "z": "d2d665dd9a2431da",
+        "name": "",
+        "x": 860,
+        "y": 20,
+        "wires": []
+    }
+]

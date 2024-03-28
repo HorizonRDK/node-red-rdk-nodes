@@ -1,0 +1,488 @@
+[
+    {
+        "id": "20f284894bd68be1",
+        "type": "tab",
+        "label": "TROS OriginBot Body Tracking",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "67565ed37584c620",
+        "type": "group",
+        "z": "20f284894bd68be1",
+        "name": "检查及运行底盘节点",
+        "style": {
+            "fill": "#e3f3d3",
+            "label": true,
+            "color": "#000000"
+        },
+        "nodes": [
+            "a00da254c5b774a9",
+            "895ed60a72493e69"
+        ],
+        "x": 394,
+        "y": 159,
+        "w": 452,
+        "h": 82
+    },
+    {
+        "id": "7387c5560a6c437e",
+        "type": "group",
+        "z": "20f284894bd68be1",
+        "name": "打开可视化页面",
+        "style": {
+            "label": true,
+            "fill": "#bfc7d7",
+            "fill-opacity": "0.48",
+            "color": "#000000"
+        },
+        "nodes": [
+            "26545e5dac1a7f73",
+            "46020a2474e59bae",
+            "ad936ed26e4bd4f1"
+        ],
+        "x": 394,
+        "y": 359,
+        "w": 492,
+        "h": 82
+    },
+    {
+        "id": "04d95651084a7c2b",
+        "type": "group",
+        "z": "20f284894bd68be1",
+        "name": "更新检测及提示",
+        "style": {
+            "fill": "#ffffbf",
+            "label": true,
+            "color": "#000000"
+        },
+        "nodes": [
+            "6605aefe9e9bcf46",
+            "22141277141d3c3d",
+            "84b78d410456cc72"
+        ],
+        "x": 214,
+        "y": 59,
+        "w": 532,
+        "h": 82
+    },
+    {
+        "id": "6b4f7186f1f5a359",
+        "type": "group",
+        "z": "20f284894bd68be1",
+        "name": "检查及运行人体跟踪节点",
+        "style": {
+            "fill": "#bfdbef",
+            "label": true,
+            "color": "#000000"
+        },
+        "nodes": [
+            "c58b88cf318a83b4",
+            "59027b1e70016213"
+        ],
+        "x": 394,
+        "y": 259,
+        "w": 452,
+        "h": 82
+    },
+    {
+        "id": "5b9e797c0b483e66",
+        "type": "inject",
+        "z": "20f284894bd68be1",
+        "name": "启动",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 110,
+        "y": 100,
+        "wires": [
+            [
+                "6605aefe9e9bcf46"
+            ]
+        ]
+    },
+    {
+        "id": "6605aefe9e9bcf46",
+        "type": "rdk-tools smartupdate",
+        "z": "20f284894bd68be1",
+        "g": "04d95651084a7c2b",
+        "name": "",
+        "x": 300,
+        "y": 100,
+        "wires": [
+            [
+                "22141277141d3c3d",
+                "a00da254c5b774a9",
+                "c58b88cf318a83b4",
+                "26545e5dac1a7f73"
+            ],
+            []
+        ]
+    },
+    {
+        "id": "22141277141d3c3d",
+        "type": "change",
+        "z": "20f284894bd68be1",
+        "g": "04d95651084a7c2b",
+        "name": "提示信息",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "智能更新已完成",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 480,
+        "y": 100,
+        "wires": [
+            [
+                "84b78d410456cc72"
+            ]
+        ]
+    },
+    {
+        "id": "84b78d410456cc72",
+        "type": "rdk-tools texttoaudio",
+        "z": "20f284894bd68be1",
+        "g": "04d95651084a7c2b",
+        "name": "",
+        "x": 650,
+        "y": 100,
+        "wires": []
+    },
+    {
+        "id": "c58b88cf318a83b4",
+        "type": "change",
+        "z": "20f284894bd68be1",
+        "g": "6b4f7186f1f5a359",
+        "name": "设定人体跟随节点",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "tros-body-tracking",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "insert",
+                "pt": "msg",
+                "to": "cp -r /opt/tros/lib/mono2d_body_detection/config/ . && export CAM_TYPE=mipi",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "launch",
+                "pt": "msg",
+                "to": "body_tracking body_tracking_without_gesture.launch.py",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 510,
+        "y": 300,
+        "wires": [
+            [
+                "59027b1e70016213"
+            ]
+        ]
+    },
+    {
+        "id": "a00da254c5b774a9",
+        "type": "change",
+        "z": "20f284894bd68be1",
+        "g": "67565ed37584c620",
+        "name": "设定底盘节点",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "tros-originbot-base tros-serial tros-originbot-msgs",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "launch",
+                "pt": "msg",
+                "to": "originbot_base robot.launch.py",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 500,
+        "y": 200,
+        "wires": [
+            [
+                "895ed60a72493e69"
+            ]
+        ]
+    },
+    {
+        "id": "895ed60a72493e69",
+        "type": "rdk-tools checkexecute",
+        "z": "20f284894bd68be1",
+        "g": "67565ed37584c620",
+        "name": "",
+        "x": 750,
+        "y": 200,
+        "wires": [
+            [
+                "ccf5c9809756ea90"
+            ],
+            [
+                "34bd02e544e591ec"
+            ]
+        ]
+    },
+    {
+        "id": "59027b1e70016213",
+        "type": "rdk-tools checkexecute",
+        "z": "20f284894bd68be1",
+        "g": "6b4f7186f1f5a359",
+        "name": "",
+        "x": 750,
+        "y": 300,
+        "wires": [
+            [
+                "ccf5c9809756ea90"
+            ],
+            [
+                "34bd02e544e591ec"
+            ]
+        ]
+    },
+    {
+        "id": "7dcae431590e6541",
+        "type": "inject",
+        "z": "20f284894bd68be1",
+        "name": "打开页面",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "str",
+        "x": 280,
+        "y": 400,
+        "wires": [
+            [
+                "46020a2474e59bae"
+            ]
+        ]
+    },
+    {
+        "id": "26545e5dac1a7f73",
+        "type": "delay",
+        "z": "20f284894bd68be1",
+        "g": "7387c5560a6c437e",
+        "name": "",
+        "pauseType": "delay",
+        "timeout": "15",
+        "timeoutUnits": "seconds",
+        "rate": "1",
+        "nbRateUnits": "1",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": false,
+        "allowrate": false,
+        "outputs": 1,
+        "x": 480,
+        "y": 400,
+        "wires": [
+            [
+                "46020a2474e59bae"
+            ]
+        ]
+    },
+    {
+        "id": "46020a2474e59bae",
+        "type": "change",
+        "z": "20f284894bd68be1",
+        "g": "7387c5560a6c437e",
+        "name": "设定链接",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "http://{host}:8000",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 640,
+        "y": 400,
+        "wires": [
+            [
+                "ad936ed26e4bd4f1"
+            ]
+        ]
+    },
+    {
+        "id": "ad936ed26e4bd4f1",
+        "type": "rdk-tools openurl",
+        "z": "20f284894bd68be1",
+        "g": "7387c5560a6c437e",
+        "name": "",
+        "x": 800,
+        "y": 400,
+        "wires": []
+    },
+    {
+        "id": "a2a195e47c32caaf",
+        "type": "inject",
+        "z": "20f284894bd68be1",
+        "name": "关闭",
+        "props": [
+            {
+                "p": "kill",
+                "v": "",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "x": 110,
+        "y": 160,
+        "wires": [
+            [
+                "895ed60a72493e69",
+                "59027b1e70016213"
+            ]
+        ]
+    },
+    {
+        "id": "ccf5c9809756ea90",
+        "type": "debug",
+        "z": "20f284894bd68be1",
+        "name": "正常结束提示",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1000,
+        "y": 220,
+        "wires": []
+    },
+    {
+        "id": "34bd02e544e591ec",
+        "type": "debug",
+        "z": "20f284894bd68be1",
+        "name": "异常结束提示",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1000,
+        "y": 280,
+        "wires": []
+    },
+    {
+        "id": "dc6762765b7a0e1c",
+        "type": "comment",
+        "z": "20f284894bd68be1",
+        "name": "名称：人体跟随机器人    版本：0.0.1",
+        "info": "",
+        "x": 180,
+        "y": 20,
+        "wires": []
+    },
+    {
+        "id": "d24067dd5e6a0894",
+        "type": "comment",
+        "z": "20f284894bd68be1",
+        "name": "注意：需要搭配OriginBot使用",
+        "info": "",
+        "x": 480,
+        "y": 20,
+        "wires": []
+    },
+    {
+        "id": "29970e820a2f5b2e",
+        "type": "inject",
+        "z": "20f284894bd68be1",
+        "name": "了解更多",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "https://developer.horizon.cc/nodehubdetail/167289845913411076",
+        "payloadType": "str",
+        "x": 740,
+        "y": 20,
+        "wires": [
+            [
+                "7e90ed6d62702490"
+            ]
+        ]
+    },
+    {
+        "id": "7e90ed6d62702490",
+        "type": "rdk-tools openurl",
+        "z": "20f284894bd68be1",
+        "name": "",
+        "x": 920,
+        "y": 20,
+        "wires": []
+    }
+]

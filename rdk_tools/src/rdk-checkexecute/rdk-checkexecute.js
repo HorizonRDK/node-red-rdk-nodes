@@ -99,7 +99,7 @@ module.exports = function(RED) {
                 commands[1] = msg.insert;
             }
             var assembledCommand = commands.join(' && ');
-            console.log(assembledCommand);
+            // console.log(assembledCommand);
             var childProcess = exec(assembledCommand + launchName, {
                 shell: '/bin/bash'
             }, function(e, out, err){

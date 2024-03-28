@@ -1,4 +1,4 @@
-English| [简体中文](./README_cn.md)
+English| [简体中文](./rdk_tools/README_cn.md)
 
 # node-red-node-rdk-tools
 Tools nodes for use with Horizon RDK hardware in Node-RED.
